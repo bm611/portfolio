@@ -1,5 +1,6 @@
 """Welcome to Reflex! This file outlines the steps to create a basic app."""
 
+from pydantic_core.core_schema import LaxOrStrictSchema
 import reflex as rx
 from components.nav import nav
 
@@ -13,10 +14,32 @@ def index() -> rx.Component:
     # Welcome Page (Index)
     return rx.vstack(
         nav(),
-        rx.text("Welcome to Reflex", class_name="pt-10 text-3xl font-bold text-center"),
+        rx.text("I'm Bharath Mohan", class_name="pt-10 text-8xl font-bold text-center"),
         rx.text(
-            "Reflex is a fast and modern framework for building web applications.",
-            class_name="text-lg leading-relaxed text-gray-600 text-center",
+            "Crafting  ",
+            rx.text(
+                "Full Stack",
+                class_name="text-2xl leading-relaxed bg-white text-black px-2 py-1 rounded mx-auto",
+                as_="span",
+            ),
+            " solutions powered by the latest in ML.",
+            class_name="text-2xl leading-relaxed text-gray-600 mx-auto",
+        ),
+        rx.text(
+            "I also do ",
+            rx.text(
+                "Astro",
+                class_name="text-2xl leading-relaxed bg-white text-black px-2 py-1 rounded mx-auto",
+                as_="span",
+            ),
+            " and ",
+            rx.text(
+                "Landscape",
+                class_name="text-2xl leading-relaxed bg-white text-black px-2 py-1 rounded mx-auto",
+                as_="span",
+            ),
+            " photography",
+            class_name="text-2xl leading-relaxed text-gray-600 mx-auto",
         ),
         rx.grid(
             rx.box(
@@ -39,9 +62,7 @@ def index() -> rx.Component:
                 rx.text("Description of Project 4"),
                 class_name="p-4 border rounded-lg transition-all duration-300 hover:shadow-lg hover:border-teal-500 hover:glow-teal-500",
             ),
-            template_columns="repeat(2, 1fr)",
-            gap=4,
-            class_name="mt-8 grid grid-cols-2 gap-6",
+            class_name="grid gap-x-6 gap-y-3 grid-cols-2 mx-auto",
         ),
         class_name="max-w-5xl p-3 space-y-4 mx-auto",
     )
