@@ -59,5 +59,4 @@ def blog_layout() -> rx.Component:
     return rx.vstack(
         rx.text("Filter by Category", class_name="text-3xl pt-10"),
         item_selector(),
-        rx.text(),
     )

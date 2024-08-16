@@ -14,7 +14,7 @@ def index() -> rx.Component:
     return rx.vstack(
         nav(),
         hero(),
-        class_name="max-w-5xl p-3 space-y-4 mx-auto",
+        class_name="max-w-5xl p-4 space-y-4 mx-auto",
     )
 
 
