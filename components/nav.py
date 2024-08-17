@@ -9,7 +9,11 @@ def nav() -> rx.Component:
                 href="/",
                 class_name="font-semibold text-white text-xl hover:text-teal-500",
             ),
-            rx.text("Projects", class_name="font-semibold text-xl hover:text-teal-500"),
+            rx.link(
+                "Projects",
+                href="/projects",
+                class_name="font-semibold text-xl text-white hover:text-teal-500",
+            ),
             rx.link(
                 "Blog",
                 href="/blog",

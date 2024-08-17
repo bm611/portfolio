@@ -3,6 +3,7 @@ import reflex as rx
 from components.hero import hero
 from components.nav import nav
 from components.blog import blog_layout
+from components.project import project_layout
 
 
 class State(rx.State):
@@ -23,7 +24,16 @@ def blog() -> rx.Component:
     return rx.vstack(
         nav(),
         blog_layout(),
-        class_name="max-w-5xl p-3 space-y-4 mx-auto",
+        class_name="max-w-5xl p-4 space-y-4 mx-auto",
+    )
+
+
+@rx.page(route="/projects", title="projets")
+def projects() -> rx.Component:
+    return rx.vstack(
+        nav(),
+        project_layout(),
+        class_name="max-w-5xl p-4 space-y-4 mx-auto",
     )
 
 

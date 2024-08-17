@@ -8,7 +8,7 @@ chip_props = {
     "style": {"_hover": {"opacity": 0.75}},
 }
 
-available_items = ["Python", "ML/AI", "Photo", "Coffee"]
+available_items = ["ML/AI", "Photo", "Coffee", "Tennis"]
 
 
 class SingleSelectionChipsState(rx.State):

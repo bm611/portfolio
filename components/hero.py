@@ -3,7 +3,10 @@ import reflex as rx
 
 def hero():
     return rx.vstack(
-        rx.text("I'm Bharath Mohan", class_name="pt-10 text-8xl font-bold text-center"),
+        rx.text(
+            "I'm Bharath Mohan",
+            class_name="pt-10 text-5xl md:text-8xl font-bold text-center",
+        ),
         rx.text(
             "Crafting  ",
             rx.text(
@@ -12,7 +15,7 @@ def hero():
                 as_="span",
             ),
             " solutions powered by the latest in ML.",
-            class_name="text-2xl leading-relaxed text-gray-600 mx-auto",
+            class_name="text-2xl leading-relaxed text-gray-600 mx-auto py-4",
         ),
         rx.text(
             "I also do ",
@@ -30,5 +33,5 @@ def hero():
             " photography",
             class_name="text-2xl leading-relaxed text-gray-600 mx-auto",
         ),
-        class_name="py-24",
+        class_name="py-12 px-6 text-center md:py-24 ",
     )
