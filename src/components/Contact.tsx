@@ -10,9 +10,9 @@ const Contact: React.FC = () => {
     subject: '',
     message: '',
   });
-  
+
   const [formStatus, setFormStatus] = useState<null | 'success' | 'error'>(null);
-  
+
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -33,7 +33,7 @@ const Contact: React.FC = () => {
     // In a real implementation, you would send the form data to a server
     console.log('Form data:', formData);
     setFormStatus('success');
-    
+
     // Reset form after submission
     setFormData({
       name: '',
@@ -41,7 +41,7 @@ const Contact: React.FC = () => {
       subject: '',
       message: '',
     });
-    
+
     // Reset status after 3 seconds
     setTimeout(() => {
       setFormStatus(null);
@@ -52,20 +52,8 @@ const Contact: React.FC = () => {
     <section id="contact" ref={ref} className="section-padding bg-dark-900 relative">
       <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-dark-600 to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6">
-        <motion.div
-          variants={fadeIn}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-16"
-        >
-          <h2 className="section-title">Get In Touch</h2>
-          <p className="text-light-300 text-lg">
-            Have a project in mind or want to discuss a potential collaboration? 
-            I'd love to hear from you.
-          </p>
-        </motion.div>
-        
+
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div
             variants={fadeIn}
@@ -76,11 +64,10 @@ const Contact: React.FC = () => {
           >
             <h3 className="text-2xl font-semibold">Contact Information</h3>
             <p className="text-light-300">
-              Feel free to reach out through the form or directly via email. 
-              I'm always open to discussing new projects, creative ideas, or opportunities 
-              to be part of your vision.
+              Contact me via this form or email. I'm open to discussing new projects,
+              ideas, and opportunities.
             </p>
-            
+
             <div className="space-y-4 mt-8">
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-dark-800 rounded-full text-neon">
@@ -88,12 +75,12 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-sm text-light-300">Email</div>
-                  <a href="mailto:hello@yourdomain.com" className="hover:text-neon transition-colors">
-                    hello@yourdomain.com
+                  <a href="mailto:bharath.mohan.pro@gmail.com" className="hover:text-neon transition-colors">
+                    bharath.mohan.pro@gmail.com
                   </a>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-dark-800 rounded-full text-neon">
                   <MessageSquare size={20} />
@@ -104,7 +91,7 @@ const Contact: React.FC = () => {
                     <a href="https://github.com/bm611" className="text-light-300 hover:text-neon transition-colors" aria-label="GitHub">
                       <Github size={20} />
                     </a>
-                    <a href="#" className="text-light-300 hover:text-neon transition-colors" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/bharath-mohan/" className="text-light-300 hover:text-neon transition-colors" aria-label="LinkedIn">
                       <Linkedin size={20} />
                     </a>
                     <a href="#" className="text-light-300 hover:text-neon transition-colors" aria-label="Twitter">
@@ -115,7 +102,7 @@ const Contact: React.FC = () => {
               </div>
             </div>
           </motion.div>
-          
+
           <motion.div
             variants={fadeIn}
             initial="hidden"
@@ -138,7 +125,7 @@ const Contact: React.FC = () => {
                     className="w-full p-3 bg-dark-800 border border-dark-600 rounded-lg focus:border-neon focus:outline-none text-light-100"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="email" className="block text-sm text-light-300 mb-1">
                     Your Email
@@ -154,7 +141,7 @@ const Contact: React.FC = () => {
                   />
                 </div>
               </div>
-              
+
               <div>
                 <label htmlFor="subject" className="block text-sm text-light-300 mb-1">
                   Subject
@@ -169,7 +156,7 @@ const Contact: React.FC = () => {
                   className="w-full p-3 bg-dark-800 border border-dark-600 rounded-lg focus:border-neon focus:outline-none text-light-100"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="message" className="block text-sm text-light-300 mb-1">
                   Message
@@ -184,7 +171,7 @@ const Contact: React.FC = () => {
                   className="w-full p-3 bg-dark-800 border border-dark-600 rounded-lg focus:border-neon focus:outline-none text-light-100 resize-none"
                 ></textarea>
               </div>
-              
+
               <div>
                 <button
                   type="submit"
@@ -192,11 +179,11 @@ const Contact: React.FC = () => {
                 >
                   Send Message
                 </button>
-                
+
                 {formStatus === 'success' && (
                   <p className="mt-2 text-sm text-success">Your message has been sent successfully!</p>
                 )}
-                
+
                 {formStatus === 'error' && (
                   <p className="mt-2 text-sm text-error">There was an error sending your message. Please try again.</p>
                 )}

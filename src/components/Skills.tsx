@@ -1,13 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { 
-  Braces, 
-  Database, 
-  Globe, 
-  Server, 
-  Code2, 
-  Cpu,
+import {
+  Database,
+  Code2,
   Smartphone,
   Terminal,
   Cloud,
@@ -59,7 +55,7 @@ const Skills: React.FC = () => {
             Technologies and tools I work with
           </p>
         </motion.div>
-        
+
         <motion.div
           variants={fadeIn}
           initial="hidden"

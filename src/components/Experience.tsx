@@ -31,7 +31,7 @@ const experiences: Experience[] = [
     title: "Systems Engineer",
     company: "Tata Consultancy Services",
     description: "Managed SCCM deployments and developed custom reporting solutions for asset tracking and compliance monitoring.",
-    skills: ["SQL", "SCCM", "Reporting Services", "IT Management"]
+    skills: ["SQL", "SCCM", "Reporting Services"]
   }
 ];
 
@@ -65,7 +65,7 @@ const Experience: React.FC = () => {
 
         <div className="max-w-4xl mx-auto relative">
           {/* Timeline line */}
-          <div className="absolute left-8 top-0 h-full w-[2px] bg-gradient-to-b from-neon/50 via-neon/20 to-transparent"></div>
+          <div className="absolute left-4 md:left-8 top-0 h-full w-[2px] bg-gradient-to-b from-neon/50 via-neon/20 to-transparent"></div>
 
           {experiences.map((exp, index) => (
             <motion.div
@@ -74,16 +74,23 @@ const Experience: React.FC = () => {
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="relative pl-24 pb-12 last:pb-0"
+              className="relative pl-16 md:pl-24 pb-12 last:pb-0"
             >
               {/* Timeline dot and icon */}
-              <div className="absolute left-0 w-16 h-16 rounded-2xl bg-dark-700 border-2 border-neon/30 flex items-center justify-center transform -translate-y-1/2">
+              <div className="absolute left-0 w-10 md:w-16 h-10 md:h-16 rounded-2xl bg-dark-700 border-2 border-neon/30 flex items-center justify-center transform -translate-y-1/2">
                 {index === 0 ? (
-                  <Briefcase size={24} className="text-neon" />
+                  <Briefcase size={20} className="text-neon md:hidden" />
                 ) : index === 1 ? (
-                  <Building2 size={24} className="text-neon" />
+                  <Building2 size={20} className="text-neon md:hidden" />
                 ) : (
-                  <Calendar size={24} className="text-neon" />
+                  <Calendar size={20} className="text-neon md:hidden" />
+                )}
+                {index === 0 ? (
+                  <Briefcase size={24} className="text-neon hidden md:block" />
+                ) : index === 1 ? (
+                  <Building2 size={24} className="text-neon hidden md:block" />
+                ) : (
+                  <Calendar size={24} className="text-neon hidden md:block" />
                 )}
               </div>
 
@@ -102,8 +109,8 @@ const Experience: React.FC = () => {
 
                 <div className="flex flex-wrap gap-2">
                   {exp.skills.map((skill, skillIndex) => (
-                    <span 
-                      key={skillIndex} 
+                    <span
+                      key={skillIndex}
                       className="px-3 py-1 rounded-full text-xs font-medium bg-dark-900/50 text-neon border border-neon/20 hover:border-neon/50 transition-colors"
                     >
                       {skill}

@@ -71,13 +71,12 @@ const Projects: React.FC = () => {
         >
           <h2 className="section-title">My Projects</h2>
           <p className="text-light-300 text-lg">
-            Here's a selection of my recent work. Each project reflects my commitment to 
-            innovation and solving real-world problems with AI and modern technologies.
+            A showcase of my recent projects to solve practical problems.
           </p>
         </motion.div>
-        
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6"
           variants={fadeIn}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
@@ -93,8 +92,8 @@ const Projects: React.FC = () => {
               className="card group overflow-hidden"
             >
               <div className="relative aspect-video mb-4 overflow-hidden rounded-lg">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -111,11 +110,11 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div>
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                 <p className="text-light-300 text-sm mb-4">{project.description}</p>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, i) => (
                     <span key={i} className="text-xs bg-dark-700 px-2 py-1 rounded text-neon">
