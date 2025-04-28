@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <span className="text-light-300">I'm </span>Bharath Mohan
+                <span className="text-light-300">I'm </span><span className="neon-glow">Bharath Mohan</span>
               </motion.h1>
               <motion.h2
                 className="text-xl md:text-3xl text-light-300 mb-4"
@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
               >
                 Building
                 <span className="relative">
-                  <span className="text-neon neon-glow"> Open Source</span>
+                  <span className="text-neon"> Open Source</span>
                 </span>
                 {" "}Projects.
               </motion.p>
