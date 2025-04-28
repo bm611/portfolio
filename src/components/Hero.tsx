@@ -16,24 +16,24 @@ const Hero: React.FC = () => {
             className="space-y-8"
           >
             <div>
-              <motion.p
-                className="text-neon mb-2 text-3xl"
+              <motion.h1
+                className="text-4xl md:text-7xl font-bold leading-tight text-neon mb-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                Hello, I'm Bharath Mohan
-              </motion.p>
+                <span className="text-light-300">I'm </span>Bharath Mohan
+              </motion.h1>
               <motion.h2
-                className="text-xl text-light-300 mb-4"
+                className="text-xl md:text-3xl text-light-300 mb-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 Data Science Engineer
               </motion.h2>
-              <motion.h1
-                className="text-5xl md:text-7xl font-bold leading-tight"
+              <motion.p
+                className="text-2xl mt-10"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
                   <span className="text-neon neon-glow"> Open Source</span>
                 </span>
                 {" "}Projects.
-              </motion.h1>
+              </motion.p>
             </div>
 
             <motion.p
