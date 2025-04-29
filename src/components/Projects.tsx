@@ -66,11 +66,32 @@ const Projects: React.FC = () => {
     visible: { opacity: 1, y: 0 },
   };
 
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const projectVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
   return (
     <section
       id="projects"
       ref={ref}
-      className="section-padding bg-dark-800 relative"
+      className="section-padding bg-dark-800 relative py-24"
     >
       <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-dark-600 to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6">
@@ -88,65 +109,71 @@ const Projects: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6"
-          variants={fadeIn}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto"
+          variants={staggerContainer}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          transition={{ duration: 0.5, delay: 0.2 }}
         >
           {projectData.map((project, index) => (
             <motion.div
               key={project.title}
-              variants={fadeIn}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-              className="card group overflow-hidden"
+              variants={projectVariant}
+              className="bg-dark-700/50 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-sm border border-dark-600 hover:border-neon/30 group md:max-w-md lg:max-w-sm mx-auto w-full"
             >
-              <div className="relative aspect-video mb-4 overflow-hidden rounded-lg">
+              <div className="relative overflow-hidden h-56 md:h-64 lg:h-72">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-dark-900/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="flex gap-4">
-                    {project.live_url && (
-                      <a
-                        href={project.live_url}
-                        className="p-3 bg-neon text-dark-900 rounded-full hover:scale-110 transition-transform"
-                        title="Live Demo"
-                      >
-                        <ExternalLink size={20} />
-                      </a>
-                    )}
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/40 to-transparent opacity-70"></div>
+
+                <div className="absolute top-4 right-4 flex gap-3">
+                  {project.live_url && (
                     <a
-                      href={project.github_url}
-                      className="p-3 bg-dark-700 text-light-100 rounded-full hover:scale-110 transition-transform"
-                      title="View Code"
+                      href={project.live_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-neon text-dark-900 p-2 rounded-full hover:scale-110 transition-transform hover:rotate-6"
+                      title="Live Demo"
+                      aria-label="View Live Demo"
                     >
-                      <Github size={20} />
+                      <ExternalLink size={18} />
                     </a>
+                  )}
+                  <a
+                    href={project.github_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-dark-800/90 text-light-100 p-2 rounded-full hover:scale-110 transition-transform hover:rotate-6"
+                    title="View Code"
+                    aria-label="View Source Code on GitHub"
+                  >
+                    <Github size={18} />
+                  </a>
+                </div>
+
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="text-xs bg-dark-800/80 px-2 py-1 rounded-md text-neon backdrop-blur-sm"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
 
-              <div>
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-light-300 text-sm mb-4">
+              <div className="p-6 md:p-7 lg:p-8">
+                <h3 className="text-xl md:text-2xl font-bold mb-3 text-light-100 group-hover:text-neon transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-light-300 text-sm md:text-base mb-4 line-clamp-3 md:line-clamp-4 lg:line-clamp-5">
                   {project.description}
                 </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="text-xs bg-dark-700 px-2 py-1 rounded text-neon"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             </motion.div>
           ))}
