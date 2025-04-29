@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { ExternalLink, Github } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { ExternalLink, Github } from "lucide-react";
 
 interface Project {
   title: string;
@@ -15,7 +15,8 @@ interface Project {
 const projectData: Project[] = [
   {
     title: "Cerebro - AI Quiz Generator",
-    description: "An AI-powered quiz generator that dynamically creates customized quizzes on any topic or subject area. Built using Google's Gemini API to analyze content and generate relevant questions.",
+    description:
+      "An AI-powered quiz generator that dynamically creates customized quizzes on any topic or subject area. Built using Google's Gemini API to analyze content and generate relevant questions.",
     image: "/cerebro.jpg",
     tags: ["Python", "Gemini", "TailwindCSS", "Reflex"],
     github_url: "https://github.com/bm611/cerebro",
@@ -23,7 +24,8 @@ const projectData: Project[] = [
   },
   {
     title: "Byte-Bites - AI Recipe Generator",
-    description: "An AI-powered recipe generator that creates unique recipes based on user preferences and available ingredients. Features intelligent ingredient substitution and dynamic recipe scaling.",
+    description:
+      "An AI-powered recipe generator that creates unique recipes based on user preferences and available ingredients. Features intelligent ingredient substitution and dynamic recipe scaling.",
     image: "/recipe.jpg",
     tags: ["Python", "Gemini", "Flux", "TailwindCSS", "Reflex"],
     github_url: "https://github.com/bm611/byte-bites",
@@ -31,7 +33,8 @@ const projectData: Project[] = [
   },
   {
     title: "Web Search",
-    description: "An advanced web search application integrating Brave Search API for real-time data retrieval and Gemini AI for enhanced result analysis and summarization. Features include comprehensive search results, AI-powered content interpretation, and efficient data processing.",
+    description:
+      "An advanced web search application integrating Brave Search API for real-time data retrieval and Gemini AI for enhanced result analysis and summarization. Features include comprehensive search results, AI-powered content interpretation, and efficient data processing.",
     image: "/search.jpg",
     tags: ["Python", "Gemini", "Brave", "Reflex"],
     github_url: "https://github.com/bm611/aisearch",
@@ -39,7 +42,8 @@ const projectData: Project[] = [
   },
   {
     title: "Chat-UI",
-    description: "A modern chat interface built with Reflex that allows you to interact with various AI models through different providers or run completely locally using open-source models.",
+    description:
+      "A modern chat interface built with Reflex that allows you to interact with various AI models through different providers or run completely locally using open-source models.",
     image: "/chat.jpg",
     tags: ["Python", "Reflex", "TailwindCSS", "Ollama", "OpenAI"],
     github_url: "https://github.com/bm611/chat-ui",
@@ -59,7 +63,11 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" ref={ref} className="section-padding bg-dark-800 relative">
+    <section
+      id="projects"
+      ref={ref}
+      className="section-padding bg-dark-800 relative"
+    >
       <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-dark-600 to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
@@ -88,7 +96,7 @@ const Projects: React.FC = () => {
               variants={fadeIn}
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
-              transition={{ duration: 0.5, delay: 0.2 + (index * 0.1) }}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
               className="card group overflow-hidden"
             >
               <div className="relative aspect-video mb-4 overflow-hidden rounded-lg">
@@ -100,11 +108,19 @@ const Projects: React.FC = () => {
                 <div className="absolute inset-0 bg-dark-900/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="flex gap-4">
                     {project.live_url && (
-                      <a href={project.live_url} className="p-3 bg-neon text-dark-900 rounded-full hover:scale-110 transition-transform" title="Live Demo">
+                      <a
+                        href={project.live_url}
+                        className="p-3 bg-neon text-dark-900 rounded-full hover:scale-110 transition-transform"
+                        title="Live Demo"
+                      >
                         <ExternalLink size={20} />
                       </a>
                     )}
-                    <a href={project.github_url} className="p-3 bg-dark-700 text-light-100 rounded-full hover:scale-110 transition-transform" title="View Code">
+                    <a
+                      href={project.github_url}
+                      className="p-3 bg-dark-700 text-light-100 rounded-full hover:scale-110 transition-transform"
+                      title="View Code"
+                    >
                       <Github size={20} />
                     </a>
                   </div>
@@ -113,11 +129,16 @@ const Projects: React.FC = () => {
 
               <div>
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-light-300 text-sm mb-4">{project.description}</p>
+                <p className="text-light-300 text-sm mb-4">
+                  {project.description}
+                </p>
 
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, i) => (
-                    <span key={i} className="text-xs bg-dark-700 px-2 py-1 rounded text-neon">
+                    <span
+                      key={i}
+                      className="text-xs bg-dark-700 px-2 py-1 rounded text-neon"
+                    >
                       {tag}
                     </span>
                   ))}
