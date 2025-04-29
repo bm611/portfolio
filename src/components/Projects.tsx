@@ -2,6 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ExternalLink, Github } from "lucide-react";
+import cerebro from "../assets/cerebro.jpeg";
+import recipe from "../assets/bb.jpeg";
+import go from "../assets/go-ph.jpeg";
+import chat from "../assets/chat.jpeg";
 
 interface Project {
   title: string;
@@ -17,7 +21,7 @@ const projectData: Project[] = [
     title: "Cerebro - AI Quiz Generator",
     description:
       "An AI-powered quiz generator that dynamically creates customized quizzes on any topic or subject area. Built using Google's Gemini API to analyze content and generate relevant questions.",
-    image: "/cerebro.jpg",
+    image: cerebro,
     tags: ["Python", "Gemini", "TailwindCSS", "Reflex"],
     github_url: "https://github.com/bm611/cerebro",
     live_url: "https://cerebro.reflex.run",
@@ -26,25 +30,25 @@ const projectData: Project[] = [
     title: "Byte-Bites - AI Recipe Generator",
     description:
       "An AI-powered recipe generator that creates unique recipes based on user preferences and available ingredients. Features intelligent ingredient substitution and dynamic recipe scaling.",
-    image: "/recipe.jpg",
+    image: recipe,
     tags: ["Python", "Gemini", "Flux", "TailwindCSS", "Reflex"],
     github_url: "https://github.com/bm611/byte-bites",
     live_url: "https://recipe.reflex.run",
   },
   {
-    title: "Web Search",
+    title: "Display ProductHunt trending tools using CLI",
     description:
-      "An advanced web search application integrating Brave Search API for real-time data retrieval and Gemini AI for enhanced result analysis and summarization. Features include comprehensive search results, AI-powered content interpretation, and efficient data processing.",
-    image: "/search.jpg",
-    tags: ["Python", "Gemini", "Brave", "Reflex"],
-    github_url: "https://github.com/bm611/aisearch",
-    live_url: "https://aisearch.reflex.com",
+      "go-ph is a command-line interface (CLI) tool that fetches and displays products launched today on Product Hunt.",
+    image: go,
+    tags: ["go", "jina", "gemini", "cobra"],
+    github_url: "https://github.com/bm611/go-ph",
+    live_url: "",
   },
   {
     title: "Chat-UI",
     description:
       "A modern chat interface built with Reflex that allows you to interact with various AI models through different providers or run completely locally using open-source models.",
-    image: "/chat.jpg",
+    image: chat,
     tags: ["Python", "Reflex", "TailwindCSS", "Ollama", "OpenAI"],
     github_url: "https://github.com/bm611/chat-ui",
     live_url: "",
