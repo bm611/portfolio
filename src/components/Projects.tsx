@@ -102,7 +102,9 @@ const Projects: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <h2 className="section-title">My Projects</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon to-teal-400">
+            My Projects
+          </h2>
           <p className="text-light-300 text-lg">
             A showcase of my recent projects to solve practical problems.
           </p>

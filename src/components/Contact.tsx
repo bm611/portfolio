@@ -1,18 +1,9 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Mail, MessageSquare, Github, Linkedin, Twitter } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Mail, Github, Linkedin } from "lucide-react";
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
-
-  const [formStatus, setFormStatus] = useState<null | 'success' | 'error'>(null);
-
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -23,174 +14,103 @@ const Contact: React.FC = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // In a real implementation, you would send the form data to a server
-    console.log('Form data:', formData);
-    setFormStatus('success');
-
-    // Reset form after submission
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    });
-
-    // Reset status after 3 seconds
-    setTimeout(() => {
-      setFormStatus(null);
-    }, 3000);
+  const staggerContainer = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   return (
-    <section id="contact" ref={ref} className="section-padding bg-dark-900 relative">
+    <section
+      id="contact"
+      ref={ref}
+      className="section-padding bg-dark-900 relative py-20"
+    >
       <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-dark-600 to-transparent"></div>
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
+        <motion.div
+          variants={fadeIn}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-2xl mx-auto mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon to-teal-400">
+            Get In Touch
+          </h2>
+          <p className="text-light-300 text-lg">
+            I'm open to discussing new projects, ideas, and opportunities. Feel
+            free to reach out through any of the channels below.
+          </p>
+        </motion.div>
 
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-3xl"
+        >
+          {/* Email Contact Card */}
           <motion.div
             variants={fadeIn}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-6"
+            className="bg-dark-800 p-6 rounded-xl border border-dark-600 hover:border-neon transition-all duration-300 flex flex-col items-center text-center"
           >
-            <h3 className="text-2xl font-semibold">Contact Information</h3>
-            <p className="text-light-300">
-              Contact me via this form or email. I'm open to discussing new projects,
-              ideas, and opportunities.
-            </p>
-
-            <div className="space-y-4 mt-8">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-dark-800 rounded-full text-neon">
-                  <Mail size={20} />
-                </div>
-                <div>
-                  <div className="text-sm text-light-300">Email</div>
-                  <a href="mailto:bharath.mohan.pro@gmail.com" className="hover:text-neon transition-colors">
-                    bharath.mohan.pro@gmail.com
-                  </a>
-                </div>
+            <a
+              href="mailto:bharath.mohan.pro@gmail.com"
+              className="hover:scale-110 transition-all duration-300"
+              aria-label="Email me"
+            >
+              <div className="p-4 bg-dark-700 rounded-full text-neon mb-4 hover:bg-dark-600 transition-colors">
+                <Mail size={24} />
               </div>
-
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-dark-800 rounded-full text-neon">
-                  <MessageSquare size={20} />
-                </div>
-                <div>
-                  <div className="text-sm text-light-300">Social Media</div>
-                  <div className="flex gap-4 mt-2">
-                    <a href="https://github.com/bm611" className="text-light-300 hover:text-neon transition-colors" aria-label="GitHub">
-                      <Github size={20} />
-                    </a>
-                    <a href="https://www.linkedin.com/in/bharath-mohan/" className="text-light-300 hover:text-neon transition-colors" aria-label="LinkedIn">
-                      <Linkedin size={20} />
-                    </a>
-                    <a href="#" className="text-light-300 hover:text-neon transition-colors" aria-label="Twitter">
-                      <Twitter size={20} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </a>
+            <h3 className="font-semibold mb-1">Email</h3>
+            <p className="text-light-300 text-sm">Drop me a line anytime</p>
           </motion.div>
 
+          {/* GitHub Contact Card */}
           <motion.div
             variants={fadeIn}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-dark-800 p-6 rounded-xl border border-dark-600 hover:border-neon transition-all duration-300 flex flex-col items-center text-center"
           >
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm text-light-300 mb-1">
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full p-3 bg-dark-800 border border-dark-600 rounded-lg focus:border-neon focus:outline-none text-light-100"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm text-light-300 mb-1">
-                    Your Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full p-3 bg-dark-800 border border-dark-600 rounded-lg focus:border-neon focus:outline-none text-light-100"
-                  />
-                </div>
+            <a
+              href="https://github.com/bm611"
+              className="hover:scale-110 transition-all duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit GitHub profile"
+            >
+              <div className="p-4 bg-dark-700 rounded-full text-neon mb-4 hover:bg-dark-600 transition-colors">
+                <Github size={24} />
               </div>
-
-              <div>
-                <label htmlFor="subject" className="block text-sm text-light-300 mb-1">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full p-3 bg-dark-800 border border-dark-600 rounded-lg focus:border-neon focus:outline-none text-light-100"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm text-light-300 mb-1">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full p-3 bg-dark-800 border border-dark-600 rounded-lg focus:border-neon focus:outline-none text-light-100 resize-none"
-                ></textarea>
-              </div>
-
-              <div>
-                <button
-                  type="submit"
-                  className="btn-primary w-full flex justify-center items-center gap-2"
-                >
-                  Send Message
-                </button>
-
-                {formStatus === 'success' && (
-                  <p className="mt-2 text-sm text-success">Your message has been sent successfully!</p>
-                )}
-
-                {formStatus === 'error' && (
-                  <p className="mt-2 text-sm text-error">There was an error sending your message. Please try again.</p>
-                )}
-              </div>
-            </form>
+            </a>
+            <h3 className="font-semibold mb-1">GitHub</h3>
+            <p className="text-light-300 text-sm">Check out my code</p>
           </motion.div>
-        </div>
+
+          {/* LinkedIn Contact Card */}
+          <motion.div
+            variants={fadeIn}
+            className="bg-dark-800 p-6 rounded-xl border border-dark-600 hover:border-neon transition-all duration-300 flex flex-col items-center text-center"
+          >
+            <a
+              href="https://www.linkedin.com/in/bharath-mohan/"
+              className="hover:scale-110 transition-all duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Connect on LinkedIn"
+            >
+              <div className="p-4 bg-dark-700 rounded-full text-neon mb-4 hover:bg-dark-600 transition-colors">
+                <Linkedin size={24} />
+              </div>
+            </a>
+            <h3 className="font-semibold mb-1">LinkedIn</h3>
+            <p className="text-light-300 text-sm">Let's connect</p>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

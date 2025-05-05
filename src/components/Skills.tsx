@@ -1,16 +1,16 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import {
   Database,
   Code2,
-  Smartphone,
+  Sparkle,
   Terminal,
   Cloud,
   Bot,
   LineChart,
-  Binary
-} from 'lucide-react';
+  Binary,
+} from "lucide-react";
 
 interface Skill {
   name: string;
@@ -18,14 +18,14 @@ interface Skill {
 }
 
 const skillsData: Skill[] = [
-  { name: 'Python', icon: <Code2 size={24} /> },
-  { name: 'Go', icon: <Terminal size={24} /> },
-  { name: 'React Native', icon: <Smartphone size={24} /> },
-  { name: 'SQL', icon: <Database size={24} /> },
-  { name: 'GCP', icon: <Cloud size={24} /> },
-  { name: 'Machine Learning', icon: <Bot size={24} /> },
-  { name: 'Data Science', icon: <LineChart size={24} /> },
-  { name: 'NLP', icon: <Binary size={24} /> },
+  { name: "Python", icon: <Code2 size={24} /> },
+  { name: "Go", icon: <Terminal size={24} /> },
+  { name: "PySpark", icon: <Sparkle size={24} /> },
+  { name: "SQL", icon: <Database size={24} /> },
+  { name: "GCP", icon: <Cloud size={24} /> },
+  { name: "Machine Learning", icon: <Bot size={24} /> },
+  { name: "Data Science", icon: <LineChart size={24} /> },
+  { name: "NLP", icon: <Binary size={24} /> },
 ];
 
 const Skills: React.FC = () => {
@@ -40,7 +40,11 @@ const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" ref={ref} className="section-padding bg-dark-900 relative">
+    <section
+      id="skills"
+      ref={ref}
+      className="section-padding bg-dark-900 relative"
+    >
       <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-dark-600 to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
@@ -50,7 +54,9 @@ const Skills: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <h2 className="section-title">Tech Stack</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon to-teal-400">
+            Tech Stack
+          </h2>
           <p className="text-light-300 text-lg">
             Technologies and tools I work with
           </p>

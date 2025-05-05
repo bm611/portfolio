@@ -1,12 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Terminal, ChevronUp } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Terminal, ChevronUp } from "lucide-react";
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
@@ -27,9 +27,9 @@ const Footer: React.FC = () => {
             className="flex items-center gap-2 text-neon font-bold text-xl mb-4 md:mb-0"
           >
             <Terminal size={24} className="text-neon" />
-            <span>Bharath</span>
+            <span>BM</span>
           </motion.div>
-          
+
           <motion.div
             variants={fadeIn}
             initial="hidden"
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
             </p>
           </motion.div>
         </div>
-        
+
         <div className="flex justify-center mt-8">
           <motion.button
             variants={fadeIn}

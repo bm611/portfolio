@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Calendar, Building2, Briefcase } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Calendar, Building2, Briefcase } from "lucide-react";
 
 interface Experience {
   date_range: string;
@@ -16,23 +16,34 @@ const experiences: Experience[] = [
     date_range: "2023 - Present",
     title: "Data Science Engineer",
     company: "Motivity Labs (Google)",
-    description: "Led development of PDF processing pipelines and PII redaction workflows. Built a Gemini-powered self-service chatbot for automated insights delivery.",
-    skills: ["Python", "GCP", "Gemini", "Document AI", "Cloud Composer", "NLP"]
+    description:
+      "Led development of PDF processing pipelines and PII redaction workflows. Built a Gemini-powered self-service chatbot for automated insights delivery.",
+    skills: ["Python", "GCP", "Gemini", "Document AI", "Cloud Composer", "NLP"],
   },
   {
     date_range: "2018 - 2023",
     title: "Data Scientist",
     company: "Thermo Fisher Scientific",
-    description: "Developed BERT-based prediction models and recommendation systems. Built ETL pipelines using PySpark for large-scale data processing.",
-    skills: ["Python", "BERT", "PySpark", "SQL", "Databricks", "Time Series", "ML"]
+    description:
+      "Developed BERT-based prediction models and recommendation systems. Built ETL pipelines using PySpark for large-scale data processing.",
+    skills: [
+      "Python",
+      "BERT",
+      "PySpark",
+      "SQL",
+      "Databricks",
+      "Time Series",
+      "ML",
+    ],
   },
   {
     date_range: "2014 - 2016",
     title: "Systems Engineer",
     company: "Tata Consultancy Services",
-    description: "Managed SCCM deployments and developed custom reporting solutions for asset tracking and compliance monitoring.",
-    skills: ["SQL", "SCCM", "Reporting Services"]
-  }
+    description:
+      "Managed SCCM deployments and developed custom reporting solutions for asset tracking and compliance monitoring.",
+    skills: ["SQL", "SCCM", "Reporting Services"],
+  },
 ];
 
 const Experience: React.FC = () => {
@@ -47,7 +58,11 @@ const Experience: React.FC = () => {
   };
 
   return (
-    <section id="experience" ref={ref} className="section-padding bg-dark-800 relative">
+    <section
+      id="experience"
+      ref={ref}
+      className="section-padding bg-dark-800 relative"
+    >
       <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-dark-600 to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
@@ -57,7 +72,9 @@ const Experience: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <h2 className="section-title">Work Experience</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon to-teal-400">
+            Work Experience
+          </h2>
           <p className="text-light-300 text-lg">
             My professional journey in data science and engineering.
           </p>
@@ -97,7 +114,9 @@ const Experience: React.FC = () => {
               <div className="card hover:bg-dark-700/50 transition-colors duration-300">
                 <div className="flex flex-wrap gap-4 items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-semibold text-light-100">{exp.title}</h3>
+                    <h3 className="text-xl font-semibold text-light-100">
+                      {exp.title}
+                    </h3>
                     <p className="text-neon">{exp.company}</p>
                   </div>
                   <span className="px-4 py-1 rounded-full bg-dark-700 text-sm font-medium text-light-300">

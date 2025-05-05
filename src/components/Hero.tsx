@@ -60,8 +60,6 @@ const Hero: React.FC = () => {
               <br />
               📟 cli apps with go
               <br />
-              📳 mobile apps with expo
-              <br />
               🌐 web apps with python
             </motion.p>
 
@@ -156,7 +154,10 @@ const Hero: React.FC = () => {
                         Go
                       </span>
                       <span className="bg-dark-600 px-2 py-1 rounded text-sm">
-                        React
+                        Databricks
+                      </span>
+                      <span className="bg-dark-600 px-2 py-1 rounded text-sm">
+                        Netlify
                       </span>
                     </div>
                   </div>
