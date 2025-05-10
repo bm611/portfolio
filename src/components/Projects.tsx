@@ -24,7 +24,7 @@ const projectData: Project[] = [
     image: cerebro,
     tags: ["Python", "Gemini", "TailwindCSS", "Reflex"],
     github_url: "https://github.com/bm611/cerebro",
-    live_url: "https://cerebro.reflex.run",
+    live_url: "https://cerebro-aqua-wood.reflex.run/",
   },
   {
     title: "Byte-Bites - AI Recipe Generator",
