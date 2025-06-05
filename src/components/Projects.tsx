@@ -6,6 +6,7 @@ import cerebro from "../assets/cerebro.jpeg";
 import recipe from "../assets/bb.jpeg";
 import go from "../assets/go-ph.jpeg";
 import chat from "../assets/chat.jpeg";
+import ark from "../assets/Ark.jpeg";
 
 interface Project {
   title: string;
@@ -21,7 +22,7 @@ const projectData: Project[] = [
     title: "Ark - Chat | Search | Learn",
     description:
       "A modern, feature-rich AI chat application built with Python and Reflex that supports multiple AI providers and local models.",
-    image: cerebro,
+    image: ark,
     tags: ["Python", "Gemini", "TailwindCSS", "Reflex"],
     github_url: "https://github.com/bm611/ark",
     live_url: "https://chatwithark.xyz/",
