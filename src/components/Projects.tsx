@@ -120,7 +120,7 @@ const Projects: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto"
           variants={staggerContainer}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
@@ -129,47 +129,48 @@ const Projects: React.FC = () => {
             <motion.div
               key={project.title}
               variants={projectVariant}
-              className="bg-dark-700/50 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 backdrop-blur-sm border border-dark-600 hover:border-neon/30 group md:max-w-md lg:max-w-sm mx-auto w-full"
+              className="bg-gradient-to-br from-dark-700/80 to-dark-800/90 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 backdrop-blur-sm border-2 border-dark-500 hover:border-neon/60 group w-full max-w-sm mx-auto relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-neon/5 before:to-teal-400/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
             >
-              <div className="relative overflow-hidden h-56 md:h-64 lg:h-72">
+              <div className="relative overflow-hidden h-48 sm:h-52 md:h-56 lg:h-60">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/40 to-transparent opacity-70"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-80"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-neon/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                <div className="absolute top-4 right-4 flex gap-3">
+                <div className="absolute top-3 right-3 flex gap-2">
                   {project.live_url && (
                     <a
                       href={project.live_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-neon text-dark-900 p-2 rounded-full hover:scale-110 transition-transform hover:rotate-6"
+                      className="bg-neon text-dark-900 p-2 border border-neon hover:bg-transparent hover:text-neon hover:scale-110 transition-all duration-300 hover:rotate-6 shadow-lg hover:shadow-neon/50"
                       title="Live Demo"
                       aria-label="View Live Demo"
                     >
-                      <ExternalLink size={18} />
+                      <ExternalLink size={16} />
                     </a>
                   )}
                   <a
                     href={project.github_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-dark-800/90 text-light-100 p-2 rounded-full hover:scale-110 transition-transform hover:rotate-6"
+                    className="bg-dark-800/90 text-light-100 p-2 border border-dark-500 hover:border-light-100 hover:bg-light-100 hover:text-dark-900 hover:scale-110 transition-all duration-300 hover:rotate-6 shadow-lg"
                     title="View Code"
                     aria-label="View Source Code on GitHub"
                   >
-                    <Github size={18} />
+                    <Github size={16} />
                   </a>
                 </div>
 
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="flex flex-wrap gap-2">
+                <div className="absolute bottom-3 left-3 right-3">
+                  <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="text-xs bg-dark-800/80 px-2 py-1 rounded-md text-neon backdrop-blur-sm"
+                        className="text-xs bg-dark-800/90 px-2 py-1 border border-dark-600 text-neon backdrop-blur-sm font-medium hover:border-neon/50 transition-colors duration-300"
                       >
                         {tag}
                       </span>
@@ -178,13 +179,18 @@ const Projects: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-6 md:p-7 lg:p-8">
-                <h3 className="text-xl md:text-2xl font-bold mb-3 text-light-100 group-hover:text-neon transition-colors">
+              <div className="p-5 md:p-6 border-t border-dark-600 bg-gradient-to-b from-dark-700/50 to-dark-800/80">
+                <h3 className="text-lg md:text-xl font-bold mb-3 text-light-100 group-hover:text-neon transition-colors duration-300 leading-tight">
                   {project.title}
                 </h3>
-                <p className="text-light-300 text-sm md:text-base mb-4 line-clamp-3 md:line-clamp-4 lg:line-clamp-5">
+                <p className="text-light-300 text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-4">
                   {project.description}
                 </p>
+                <div className="mt-4 pt-3 border-t border-dark-600/50">
+                  <div className="flex items-center justify-end">
+                    <div className="w-6 h-px bg-gradient-to-r from-neon to-teal-400 group-hover:w-12 transition-all duration-500"></div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
