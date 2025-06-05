@@ -18,6 +18,15 @@ interface Project {
 
 const projectData: Project[] = [
   {
+    title: "Ark - Chat | Search | Learn",
+    description:
+      "A modern, feature-rich AI chat application built with Python and Reflex that supports multiple AI providers and local models.",
+    image: cerebro,
+    tags: ["Python", "Gemini", "TailwindCSS", "Reflex"],
+    github_url: "https://github.com/bm611/ark",
+    live_url: "https://chatwithark.xyz/",
+  },
+  {
     title: "Cerebro - AI Quiz Generator",
     description:
       "An AI-powered quiz generator that dynamically creates customized quizzes on any topic or subject area. Built using Google's Gemini API to analyze content and generate relevant questions.",
