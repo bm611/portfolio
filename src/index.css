@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light dark;
 }
 
 html {
@@ -11,11 +11,16 @@ html {
 }
 
 body {
-  @apply bg-dark-900 text-light-100 font-space;
+  @apply bg-light-200 dark:bg-dark-900 text-light-800 dark:text-light-100 font-space transition-colors duration-300;
   overflow-x: hidden;
 }
 
 .neon-glow {
+  /* No glow effect in light mode */
+  text-shadow: none;
+}
+
+.dark .neon-glow {
   text-shadow: 0 0 10px rgba(180, 254, 59, 0.7),
                0 0 20px rgba(180, 254, 59, 0.5),
                0 0 30px rgba(180, 254, 59, 0.3);
@@ -32,23 +37,23 @@ body {
 
 @layer components {
   .btn-primary {
-    @apply px-6 py-3 bg-neon text-dark-900 font-medium rounded-full hover:brightness-110 transition-all;
+    @apply px-6 py-3 bg-primary-light dark:bg-neon text-light-100 dark:text-dark-900 font-medium rounded-full hover:bg-primary-light-hover dark:hover:brightness-110 transition-all;
   }
   
   .btn-secondary {
-    @apply px-6 py-3 bg-dark-700 text-light-100 font-medium rounded-full border border-dark-600 hover:border-neon transition-all;
+    @apply px-6 py-3 bg-light-300 dark:bg-dark-700 text-light-800 dark:text-light-100 font-medium rounded-full border border-light-400 dark:border-dark-600 hover:border-primary-light dark:hover:border-neon transition-all;
   }
   
   .nav-link {
-    @apply relative py-2 text-light-300 hover:text-neon transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-neon after:transition-all hover:after:w-full;
+    @apply relative py-2 text-light-700 dark:text-light-300 hover:text-primary-light dark:hover:text-neon transition-colors after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-primary-light dark:after:bg-neon after:transition-all hover:after:w-full;
   }
   
   .card {
-    @apply bg-dark-800 border border-dark-600 rounded-xl p-6 hover:border-neon/30 transition-all;
+    @apply bg-light-200 dark:bg-dark-800 border border-light-300 dark:border-dark-600 rounded-xl p-6 hover:border-primary-light/30 dark:hover:border-neon/30 transition-all;
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-8;
+    @apply text-3xl md:text-4xl font-bold mb-8 text-light-800 dark:text-light-100;
   }
   
   .section-padding {

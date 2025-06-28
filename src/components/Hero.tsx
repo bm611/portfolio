@@ -6,10 +6,10 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center pt-20 bg-dark-900 overflow-hidden"
+      className="min-h-screen flex items-center pt-20 bg-light-200 dark:bg-dark-900 overflow-hidden"
     >
       <div className="container mx-auto px-4 md:px-6 py-12 relative">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-neon/5 blur-3xl rounded-full -z-10"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-primary-light/5 dark:bg-neon/5 blur-3xl rounded-full -z-10"></div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -25,11 +25,11 @@ const Hero: React.FC = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <span className="text-light-300">I'm </span>
-                <span className="neon-glow">Bharath Mohan</span>
+                <span className="text-light-700 dark:text-light-300">I'm </span>
+                <span className="text-primary-light dark:text-neon neon-glow">Bharath Mohan</span>
               </motion.h1>
               <motion.h2
-                className="text-xl md:text-3xl text-light-300 mb-4"
+                className="text-xl md:text-3xl text-light-700 dark:text-light-300 mb-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
@@ -44,14 +44,14 @@ const Hero: React.FC = () => {
               >
                 Building
                 <span className="relative">
-                  <span className="text-neon"> Open Source</span>
+                  <span className="text-primary-light dark:text-neon"> Open Source</span>
                 </span>{" "}
                 Projects.
               </motion.p>
             </div>
 
             <motion.p
-              className="text-light-300 text-lg max-w-xl"
+              className="text-light-700 dark:text-light-300 text-lg max-w-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.9 }}
@@ -92,87 +92,67 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative w-full aspect-square max-w-md mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-tr from-neon/20 to-transparent rounded-full blur-2xl"></div>
+            <div className="relative w-full max-w-lg mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary-light/20 dark:from-neon/20 to-transparent rounded-2xl blur-3xl"></div>
 
               <motion.div
-                className="relative bg-dark-800 border border-dark-600 rounded-xl p-4 shadow-xl"
-                animate={{ y: [0, -10, 0] }}
+                className="relative bg-gradient-to-br from-light-200 to-light-300 dark:from-dark-800 dark:to-dark-900 border border-primary-light/20 dark:border-neon/20 rounded-2xl p-6 shadow-2xl backdrop-blur-sm"
+                animate={{ y: [0, -8, 0] }}
                 transition={{
                   repeat: Infinity,
-                  duration: 6,
+                  duration: 8,
                   ease: "easeInOut",
                 }}
               >
-                <div className="bg-dark-900 rounded-lg p-4">
-                  <div className="flex items-center mb-2">
-                    <div className="w-3 h-3 rounded-full bg-error mr-2"></div>
-                    <div className="w-3 h-3 rounded-full bg-warning mr-2"></div>
-                    <div className="w-3 h-3 rounded-full bg-success"></div>
-                    <div className="ml-auto text-light-300 text-xs">
-                      portfolio.js
-                    </div>
+                <div className="mb-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-4 h-4 rounded-full bg-primary-light dark:bg-gradient-to-r dark:from-neon dark:to-green-400 animate-pulse"></div>
+                    <h3 className="text-xl font-bold text-primary-light dark:text-neon">
+                      Currently Building
+                    </h3>
                   </div>
 
-                  <div className="font-mono text-sm text-light-300">
-                    <div className="text-light-400">// portfolio</div>
-                    <div>
-                      <span className="text-blue-400">const</span>{" "}
-                      <span className="text-green-400">developer</span> = {"{"}
+                  <div className="space-y-4">
+                    <div className="p-4 bg-light-300/50 dark:bg-dark-800/50 rounded-xl border border-primary-light/10 dark:border-neon/10">
+                      <h4 className="text-lg font-semibold text-light-800 dark:text-light-100 mb-2">
+                        Ark
+                      </h4>
+                      <p className="text-light-700 dark:text-light-300 text-sm leading-relaxed">
+                        A modern, feature-rich AI chat application built with
+                        Python and Reflex that provides seamless access to
+                        cutting-edge AI models through OpenRouter.
+                      </p>
                     </div>
-                    <div className="pl-4">
-                      <span className="text-purple-400">name</span>:{" "}
-                      <span className="text-orange-300">'Bharath'</span>,
-                    </div>
-                    <div className="pl-4">
-                      <span className="text-purple-400">role</span>:{" "}
-                      <span className="text-orange-300">
-                        'Data Science Engineer'
-                      </span>
-                      ,
-                    </div>
-                    <div className="pl-4">
-                      <span className="text-purple-400">loves</span>:{" "}
-                      <span className="text-orange-300">'Open Source'</span>,
-                    </div>
-                    <div className="pl-4">
-                      <span className="text-purple-400">available</span>:{" "}
-                      <span className="text-blue-400">true</span>
-                    </div>
-                    <div>{"}"}</div>
                   </div>
                 </div>
 
-                <div className="mt-4 space-y-2">
-                  <div className="bg-dark-700 p-3 rounded-lg">
-                    <div className="font-medium mb-1">Tech Stack</div>
-                    <div className="flex gap-2">
-                      <span className="bg-dark-600 px-2 py-1 rounded text-sm">
+                <div className="space-y-4">
+                  <div className="bg-light-300/50 dark:bg-dark-700/50 p-4 rounded-xl border border-light-400/50 dark:border-dark-600/50">
+                    <div className="font-medium mb-3 text-light-800 dark:text-light-100">
+                      Tech Stack
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-primary-light/10 dark:bg-gradient-to-r dark:from-neon/20 dark:to-green-400/20 border border-primary-light/30 dark:border-neon/30 px-3 py-1 rounded-full text-sm text-primary-light dark:text-neon font-medium">
                         Python
                       </span>
-                      <span className="bg-dark-600 px-2 py-1 rounded text-sm">
-                        Go
+                      <span className="bg-primary-light/10 dark:bg-gradient-to-r dark:from-neon/20 dark:to-green-400/20 border border-primary-light/30 dark:border-neon/30 px-3 py-1 rounded-full text-sm text-primary-light dark:text-neon font-medium">
+                        Reflex
                       </span>
-                      <span className="bg-dark-600 px-2 py-1 rounded text-sm">
-                        Databricks
-                      </span>
-                      <span className="bg-dark-600 px-2 py-1 rounded text-sm">
-                        Netlify
-                      </span>
-                    </div>
-                  </div>
 
-                  <div className="bg-dark-700 p-3 rounded-lg">
-                    <div className="text-sm mb-1">Currently Building</div>
-                    <div className="flex gap-2">
-                      <span className="bg-dark-600 px-2 py-1 rounded text-sm">
-                        CLI Apps
+                      <span className="bg-primary-light/10 dark:bg-gradient-to-r dark:from-neon/20 dark:to-green-400/20 border border-primary-light/30 dark:border-neon/30 px-3 py-1 rounded-full text-sm text-primary-light dark:text-neon font-medium">
+                        Cloudflare
                       </span>
-                      <span className="bg-dark-600 px-2 py-1 rounded text-sm">
-                        Mobile Apps
+                      <span className="bg-primary-light/10 dark:bg-gradient-to-r dark:from-neon/20 dark:to-green-400/20 border border-primary-light/30 dark:border-neon/30 px-3 py-1 rounded-full text-sm text-primary-light dark:text-neon font-medium">
+                        Railway
                       </span>
-                      <span className="bg-dark-600 px-2 py-1 rounded text-sm">
-                        Web Apps
+                      <span className="bg-primary-light/10 dark:bg-gradient-to-r dark:from-neon/20 dark:to-green-400/20 border border-primary-light/30 dark:border-neon/30 px-3 py-1 rounded-full text-sm text-primary-light dark:text-neon font-medium">
+                        Clerk
+                      </span>
+                      <span className="bg-primary-light/10 dark:bg-gradient-to-r dark:from-neon/20 dark:to-green-400/20 border border-primary-light/30 dark:border-neon/30 px-3 py-1 rounded-full text-sm text-primary-light dark:text-neon font-medium">
+                        Neon
+                      </span>
+                      <span className="bg-primary-light/10 dark:bg-gradient-to-r dark:from-neon/20 dark:to-green-400/20 border border-primary-light/30 dark:border-neon/30 px-3 py-1 rounded-full text-sm text-primary-light dark:text-neon font-medium">
+                        Umami
                       </span>
                     </div>
                   </div>

@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -8,6 +9,8 @@ export default {
       },
       colors: {
         'neon': '#B4FE3B',
+        'primary-light': '#1976D2', // Blue for light mode
+        'primary-light-hover': '#1565C0', // Darker blue for hover states
         'dark': {
           900: '#090909',
           800: '#121212',
@@ -16,9 +19,14 @@ export default {
         },
         'light': {
           100: '#FFFFFF',
-          200: '#F5F5F5',
-          300: '#E5E5E5',
-          400: '#D4D4D4',
+          200: '#F8F9FA',
+          300: '#E9ECEF',
+          400: '#DEE2E6',
+          500: '#CED4DA',
+          600: '#6C757D',
+          700: '#495057',
+          800: '#343A40',
+          900: '#212529',
         },
         'success': {
           DEFAULT: '#10B981',

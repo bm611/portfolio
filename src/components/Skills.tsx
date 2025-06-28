@@ -43,9 +43,9 @@ const Skills: React.FC = () => {
     <section
       id="skills"
       ref={ref}
-      className="section-padding bg-dark-900 relative"
+      className="section-padding bg-light-200 dark:bg-dark-900 relative"
     >
-      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-dark-600 to-transparent"></div>
+      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-light-400 dark:via-dark-600 to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           variants={fadeIn}
@@ -54,10 +54,10 @@ const Skills: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon to-teal-400">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-blue-600 dark:from-neon dark:to-teal-400">
             Tech Stack
           </h2>
-          <p className="text-light-300 text-lg">
+          <p className="text-light-700 dark:text-light-300 text-lg">
             Technologies and tools I work with
           </p>
         </motion.div>
@@ -76,10 +76,10 @@ const Skills: React.FC = () => {
               initial="hidden"
               animate={inView ? "visible" : "hidden"}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card flex flex-col items-center justify-center p-6 hover:border-neon transition-colors"
+              className="card flex flex-col items-center justify-center p-6 hover:border-primary-light dark:hover:border-neon transition-colors"
             >
-              <div className="text-neon mb-4">{skill.icon}</div>
-              <span className="text-light-100 font-medium">{skill.name}</span>
+              <div className="text-primary-light dark:text-neon mb-4">{skill.icon}</div>
+              <span className="text-light-800 dark:text-light-100 font-medium">{skill.name}</span>
             </motion.div>
           ))}
         </motion.div>

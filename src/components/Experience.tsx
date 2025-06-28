@@ -61,9 +61,9 @@ const Experience: React.FC = () => {
     <section
       id="experience"
       ref={ref}
-      className="section-padding bg-dark-800 relative"
+      className="section-padding bg-light-200 dark:bg-dark-800 relative"
     >
-      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-dark-600 to-transparent"></div>
+      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-light-400 dark:via-dark-600 to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           variants={fadeIn}
@@ -72,17 +72,17 @@ const Experience: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon to-teal-400">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-blue-600 dark:from-neon dark:to-teal-400">
             Work Experience
           </h2>
-          <p className="text-light-300 text-lg">
+          <p className="text-light-700 dark:text-light-300 text-lg">
             My professional journey in data science and engineering.
           </p>
         </motion.div>
 
         <div className="max-w-4xl mx-auto relative">
           {/* Timeline line */}
-          <div className="absolute left-4 md:left-8 top-0 h-full w-[2px] bg-gradient-to-b from-neon/50 via-neon/20 to-transparent"></div>
+          <div className="absolute left-4 md:left-8 top-0 h-full w-[2px] bg-gradient-to-b from-primary-light/50 via-primary-light/20 dark:from-neon/50 dark:via-neon/20 to-transparent"></div>
 
           {experiences.map((exp, index) => (
             <motion.div
@@ -94,43 +94,43 @@ const Experience: React.FC = () => {
               className="relative pl-16 md:pl-24 pb-12 last:pb-0"
             >
               {/* Timeline dot and icon */}
-              <div className="absolute left-0 w-10 md:w-16 h-10 md:h-16 rounded-2xl bg-dark-700 border-2 border-neon/30 flex items-center justify-center transform -translate-y-1/2">
+              <div className="absolute left-0 w-10 md:w-16 h-10 md:h-16 rounded-2xl bg-light-300 dark:bg-dark-700 border-2 border-primary-light/30 dark:border-neon/30 flex items-center justify-center transform -translate-y-1/2">
                 {index === 0 ? (
-                  <Briefcase size={20} className="text-neon md:hidden" />
+                  <Briefcase size={20} className="text-primary-light dark:text-neon md:hidden" />
                 ) : index === 1 ? (
-                  <Building2 size={20} className="text-neon md:hidden" />
+                  <Building2 size={20} className="text-primary-light dark:text-neon md:hidden" />
                 ) : (
-                  <Calendar size={20} className="text-neon md:hidden" />
+                  <Calendar size={20} className="text-primary-light dark:text-neon md:hidden" />
                 )}
                 {index === 0 ? (
-                  <Briefcase size={24} className="text-neon hidden md:block" />
+                  <Briefcase size={24} className="text-primary-light dark:text-neon hidden md:block" />
                 ) : index === 1 ? (
-                  <Building2 size={24} className="text-neon hidden md:block" />
+                  <Building2 size={24} className="text-primary-light dark:text-neon hidden md:block" />
                 ) : (
-                  <Calendar size={24} className="text-neon hidden md:block" />
+                  <Calendar size={24} className="text-primary-light dark:text-neon hidden md:block" />
                 )}
               </div>
 
-              <div className="card hover:bg-dark-700/50 transition-colors duration-300">
+              <div className="card hover:bg-light-300/50 dark:hover:bg-dark-700/50 transition-colors duration-300">
                 <div className="flex flex-wrap gap-4 items-start justify-between mb-4">
                   <div>
-                    <h3 className="text-xl font-semibold text-light-100">
+                    <h3 className="text-xl font-semibold text-light-800 dark:text-light-100">
                       {exp.title}
                     </h3>
-                    <p className="text-neon">{exp.company}</p>
+                    <p className="text-primary-light dark:text-neon">{exp.company}</p>
                   </div>
-                  <span className="px-4 py-1 rounded-full bg-dark-700 text-sm font-medium text-light-300">
+                  <span className="px-4 py-1 rounded-full bg-light-300 dark:bg-dark-700 text-sm font-medium text-light-700 dark:text-light-300">
                     {exp.date_range}
                   </span>
                 </div>
 
-                <p className="text-light-300 mb-4">{exp.description}</p>
+                <p className="text-light-700 dark:text-light-300 mb-4">{exp.description}</p>
 
                 <div className="flex flex-wrap gap-2">
                   {exp.skills.map((skill, skillIndex) => (
                     <span
                       key={skillIndex}
-                      className="px-3 py-1 rounded-full text-xs font-medium bg-dark-900/50 text-neon border border-neon/20 hover:border-neon/50 transition-colors"
+                      className="px-3 py-1 rounded-full text-xs font-medium bg-light-100/50 dark:bg-dark-900/50 text-primary-light dark:text-neon border border-primary-light/20 dark:border-neon/20 hover:border-primary-light/50 dark:hover:border-neon/50 transition-colors"
                     >
                       {skill}
                     </span>

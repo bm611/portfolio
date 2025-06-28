@@ -101,9 +101,9 @@ const Projects: React.FC = () => {
     <section
       id="projects"
       ref={ref}
-      className="section-padding bg-dark-800 relative py-24"
+      className="section-padding bg-light-200 dark:bg-dark-800 relative py-24"
     >
-      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-dark-600 to-transparent"></div>
+      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-light-400 dark:via-dark-600 to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           variants={fadeIn}
@@ -112,10 +112,10 @@ const Projects: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon to-teal-400">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-blue-600 dark:from-neon dark:to-teal-400">
             My Projects
           </h2>
-          <p className="text-light-300 text-lg">
+          <p className="text-light-700 dark:text-light-300 text-lg">
             A showcase of my recent projects to solve practical problems.
           </p>
         </motion.div>
@@ -126,11 +126,11 @@ const Projects: React.FC = () => {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          {projectData.map((project, index) => (
+          {projectData.map((project) => (
             <motion.div
               key={project.title}
               variants={projectVariant}
-              className="bg-gradient-to-br from-dark-700/80 to-dark-800/90 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 backdrop-blur-sm border-2 border-dark-500 hover:border-neon/60 group w-full max-w-sm mx-auto relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-neon/5 before:to-teal-400/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
+              className="bg-gradient-to-br from-light-300/80 to-light-400/90 dark:from-dark-700/80 dark:to-dark-800/90 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 backdrop-blur-sm border-2 border-light-400 dark:border-dark-500 hover:border-primary-light/60 dark:hover:border-neon/60 group w-full max-w-sm mx-auto relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-primary-light/5 before:to-blue-400/5 dark:before:from-neon/5 dark:before:to-teal-400/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500"
             >
               <div className="relative overflow-hidden h-48 sm:h-52 md:h-56 lg:h-60">
                 <img
@@ -138,8 +138,8 @@ const Projects: React.FC = () => {
                   alt={project.title}
                   className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/50 to-transparent opacity-80"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-neon/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-light-100 via-light-100/50 dark:from-dark-900 dark:via-dark-900/50 to-transparent opacity-80"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-primary-light/10 dark:to-neon/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 <div className="absolute top-3 right-3 flex gap-2">
                   {project.live_url && (
@@ -147,7 +147,7 @@ const Projects: React.FC = () => {
                       href={project.live_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-neon text-dark-900 p-2 border border-neon hover:bg-transparent hover:text-neon hover:scale-110 transition-all duration-300 hover:rotate-6 shadow-lg hover:shadow-neon/50"
+                      className="bg-primary-light dark:bg-neon text-white dark:text-dark-900 p-2 border border-primary-light dark:border-neon hover:bg-transparent hover:text-primary-light dark:hover:text-neon hover:scale-110 transition-all duration-300 hover:rotate-6 shadow-lg hover:shadow-primary-light/50 dark:hover:shadow-neon/50"
                       title="Live Demo"
                       aria-label="View Live Demo"
                     >
@@ -158,7 +158,7 @@ const Projects: React.FC = () => {
                     href={project.github_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-dark-800/90 text-light-100 p-2 border border-dark-500 hover:border-light-100 hover:bg-light-100 hover:text-dark-900 hover:scale-110 transition-all duration-300 hover:rotate-6 shadow-lg"
+                    className="bg-light-300/90 dark:bg-dark-800/90 text-light-800 dark:text-light-100 p-2 border border-light-500 dark:border-dark-500 hover:border-light-800 dark:hover:border-light-100 hover:bg-light-100 dark:hover:bg-light-100 hover:text-dark-900 hover:scale-110 transition-all duration-300 hover:rotate-6 shadow-lg"
                     title="View Code"
                     aria-label="View Source Code on GitHub"
                   >
@@ -171,7 +171,7 @@ const Projects: React.FC = () => {
                     {project.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="text-xs bg-dark-800/90 px-2 py-1 border border-dark-600 text-neon backdrop-blur-sm font-medium hover:border-neon/50 transition-colors duration-300"
+                        className="text-xs bg-light-300/90 dark:bg-dark-800/90 px-2 py-1 border border-light-500 dark:border-dark-600 text-primary-light dark:text-neon backdrop-blur-sm font-medium hover:border-primary-light/50 dark:hover:border-neon/50 transition-colors duration-300"
                       >
                         {tag}
                       </span>
@@ -180,16 +180,16 @@ const Projects: React.FC = () => {
                 </div>
               </div>
 
-              <div className="p-5 md:p-6 border-t border-dark-600 bg-gradient-to-b from-dark-700/50 to-dark-800/80">
-                <h3 className="text-lg md:text-xl font-bold mb-3 text-light-100 group-hover:text-neon transition-colors duration-300 leading-tight">
+              <div className="p-5 md:p-6 border-t border-light-400 dark:border-dark-600 bg-gradient-to-b from-light-300/50 to-light-400/80 dark:from-dark-700/50 dark:to-dark-800/80">
+                <h3 className="text-lg md:text-xl font-bold mb-3 text-light-800 dark:text-light-100 group-hover:text-primary-light dark:group-hover:text-neon transition-colors duration-300 leading-tight">
                   {project.title}
                 </h3>
-                <p className="text-light-300 text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-4">
+                <p className="text-light-700 dark:text-light-300 text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-4">
                   {project.description}
                 </p>
-                <div className="mt-4 pt-3 border-t border-dark-600/50">
+                <div className="mt-4 pt-3 border-t border-light-400/50 dark:border-dark-600/50">
                   <div className="flex items-center justify-end">
-                    <div className="w-6 h-px bg-gradient-to-r from-neon to-teal-400 group-hover:w-12 transition-all duration-500"></div>
+                    <div className="w-6 h-px bg-gradient-to-r from-primary-light to-blue-400 dark:from-neon dark:to-teal-400 group-hover:w-12 transition-all duration-500"></div>
                   </div>
                 </div>
               </div>

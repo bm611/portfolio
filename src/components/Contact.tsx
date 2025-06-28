@@ -27,9 +27,9 @@ const Contact: React.FC = () => {
     <section
       id="contact"
       ref={ref}
-      className="section-padding bg-dark-900 relative py-20"
+      className="section-padding bg-light-200 dark:bg-dark-900 relative py-20"
     >
-      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-dark-600 to-transparent"></div>
+      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-light-400 dark:via-dark-600 to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
         <motion.div
           variants={fadeIn}
@@ -38,10 +38,10 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-center max-w-2xl mx-auto mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-neon to-teal-400">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-blue-600 dark:from-neon dark:to-teal-400">
             Get In Touch
           </h2>
-          <p className="text-light-300 text-lg">
+          <p className="text-light-700 dark:text-light-300 text-lg">
             I'm open to discussing new projects, ideas, and opportunities. Feel
             free to reach out through any of the channels below.
           </p>
@@ -56,25 +56,25 @@ const Contact: React.FC = () => {
           {/* Email Contact Card */}
           <motion.div
             variants={fadeIn}
-            className="bg-dark-800 p-6 rounded-xl border border-dark-600 hover:border-neon transition-all duration-300 flex flex-col items-center text-center"
+            className="bg-light-200 dark:bg-dark-800 p-6 rounded-xl border border-light-300 dark:border-dark-600 hover:border-primary-light dark:hover:border-neon transition-all duration-300 flex flex-col items-center text-center"
           >
             <a
               href="mailto:bharath.mohan.pro@gmail.com"
               className="hover:scale-110 transition-all duration-300"
               aria-label="Email me"
             >
-              <div className="p-4 bg-dark-700 rounded-full text-neon mb-4 hover:bg-dark-600 transition-colors">
+              <div className="p-4 bg-light-300 dark:bg-dark-700 rounded-full text-primary-light dark:text-neon mb-4 hover:bg-light-400 dark:hover:bg-dark-600 transition-colors">
                 <Mail size={24} />
               </div>
             </a>
-            <h3 className="font-semibold mb-1">Email</h3>
-            <p className="text-light-300 text-sm">Drop me a line anytime</p>
+            <h3 className="font-semibold mb-1 text-light-800 dark:text-light-100">Email</h3>
+            <p className="text-light-700 dark:text-light-300 text-sm">Drop me a line anytime</p>
           </motion.div>
 
           {/* GitHub Contact Card */}
           <motion.div
             variants={fadeIn}
-            className="bg-dark-800 p-6 rounded-xl border border-dark-600 hover:border-neon transition-all duration-300 flex flex-col items-center text-center"
+            className="bg-light-200 dark:bg-dark-800 p-6 rounded-xl border border-light-300 dark:border-dark-600 hover:border-primary-light dark:hover:border-neon transition-all duration-300 flex flex-col items-center text-center"
           >
             <a
               href="https://github.com/bm611"
@@ -83,18 +83,18 @@ const Contact: React.FC = () => {
               rel="noopener noreferrer"
               aria-label="Visit GitHub profile"
             >
-              <div className="p-4 bg-dark-700 rounded-full text-neon mb-4 hover:bg-dark-600 transition-colors">
+              <div className="p-4 bg-light-300 dark:bg-dark-700 rounded-full text-primary-light dark:text-neon mb-4 hover:bg-light-400 dark:hover:bg-dark-600 transition-colors">
                 <Github size={24} />
               </div>
             </a>
-            <h3 className="font-semibold mb-1">GitHub</h3>
-            <p className="text-light-300 text-sm">Check out my code</p>
+            <h3 className="font-semibold mb-1 text-light-800 dark:text-light-100">GitHub</h3>
+            <p className="text-light-700 dark:text-light-300 text-sm">Check out my code</p>
           </motion.div>
 
           {/* LinkedIn Contact Card */}
           <motion.div
             variants={fadeIn}
-            className="bg-dark-800 p-6 rounded-xl border border-dark-600 hover:border-neon transition-all duration-300 flex flex-col items-center text-center"
+            className="bg-light-200 dark:bg-dark-800 p-6 rounded-xl border border-light-300 dark:border-dark-600 hover:border-primary-light dark:hover:border-neon transition-all duration-300 flex flex-col items-center text-center"
           >
             <a
               href="https://www.linkedin.com/in/bharath-mohan/"
@@ -103,12 +103,12 @@ const Contact: React.FC = () => {
               rel="noopener noreferrer"
               aria-label="Connect on LinkedIn"
             >
-              <div className="p-4 bg-dark-700 rounded-full text-neon mb-4 hover:bg-dark-600 transition-colors">
+              <div className="p-4 bg-light-300 dark:bg-dark-700 rounded-full text-primary-light dark:text-neon mb-4 hover:bg-light-400 dark:hover:bg-dark-600 transition-colors">
                 <Linkedin size={24} />
               </div>
             </a>
-            <h3 className="font-semibold mb-1">LinkedIn</h3>
-            <p className="text-light-300 text-sm">Let's connect</p>
+            <h3 className="font-semibold mb-1 text-light-800 dark:text-light-100">LinkedIn</h3>
+            <p className="text-light-700 dark:text-light-300 text-sm">Let's connect</p>
           </motion.div>
         </motion.div>
       </div>
