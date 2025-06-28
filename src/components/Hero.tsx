@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center pt-20 bg-light-200 dark:bg-dark-900 overflow-hidden"
+      className="md:min-h-screen flex items-center py-44 md:pt-20 bg-light-200 dark:bg-dark-900 overflow-hidden"
     >
       <div className="container mx-auto px-4 md:px-6 py-12 relative">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-primary-light/5 dark:bg-neon/5 blur-3xl rounded-full -z-10"></div>
@@ -26,7 +26,9 @@ const Hero: React.FC = () => {
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <span className="text-light-700 dark:text-light-300">I'm </span>
-                <span className="text-primary-light dark:text-neon neon-glow">Bharath Mohan</span>
+                <span className="text-primary-light dark:text-neon neon-glow">
+                  Bharath Mohan
+                </span>
               </motion.h1>
               <motion.h2
                 className="text-xl md:text-3xl text-light-700 dark:text-light-300 mb-4"
@@ -44,7 +46,10 @@ const Hero: React.FC = () => {
               >
                 Building
                 <span className="relative">
-                  <span className="text-primary-light dark:text-neon"> Open Source</span>
+                  <span className="text-primary-light dark:text-neon">
+                    {" "}
+                    Open Source
+                  </span>
                 </span>{" "}
                 Projects.
               </motion.p>
