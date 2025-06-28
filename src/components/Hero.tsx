@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
+            className="relative hidden lg:block"
           >
             <div className="relative w-full max-w-lg mx-auto">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary-light/20 dark:from-neon/20 to-transparent rounded-2xl blur-3xl"></div>
