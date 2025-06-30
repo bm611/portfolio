@@ -43,7 +43,7 @@ const projectData: Project[] = [
     image: recipe,
     tags: ["Python", "Gemini", "Flux", "TailwindCSS", "Reflex"],
     github_url: "https://github.com/bm611/byte-bites",
-    live_url: "https://recipe.reflex.run",
+    live_url: "https://app-lime-ring.reflex.run/",
   },
   {
     title: "Display ProductHunt trending tools using CLI",
