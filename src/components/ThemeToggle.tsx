@@ -26,7 +26,7 @@ const ThemeToggle: React.FC = () => {
       
       {/* Sliding toggle circle */}
       <motion.div
-        className="absolute top-0.5 w-7 h-7 rounded-full bg-gradient-to-br from-white to-light-100 dark:from-dark-800 dark:to-dark-900 border border-light-300 dark:border-dark-600 shadow-lg flex items-center justify-center"
+        className="absolute top-0.5 w-7 h-7 rounded-full bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 border border-gray-300 dark:border-gray-600 shadow-lg flex items-center justify-center"
         animate={{
           x: isDark ? 32 : 2,
         }}
