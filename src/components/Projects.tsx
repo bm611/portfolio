@@ -6,6 +6,7 @@ import recipe from "../assets/bb.jpeg";
 import go from "../assets/go-ph.jpeg";
 import chat from "../assets/chat.jpeg";
 import ark from "../assets/Ark.jpeg";
+import wander from "../assets/wander.png";
 
 interface Project {
   title: string;
@@ -17,6 +18,15 @@ interface Project {
 }
 
 const projectData: Project[] = [
+  {
+    title: "Wander Weave",
+    description:
+      "Transform your travel photos into captivating stories with AI-powered narrative generation.",
+    image: wander,
+    tags: ["React", "Vite", "Gemini"],
+    github_url: "https://github.com/bm611/wanderweave",
+    live_url: "https://wander-weave.netlify.app",
+  },
   {
     title: "Ark",
     description:
