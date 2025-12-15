@@ -10,14 +10,14 @@ const ThemeToggle: React.FC = () => {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="relative w-16 h-8 rounded-full bg-gradient-to-r from-light-300 to-light-400 dark:from-dark-700 dark:to-dark-600 border border-light-400 dark:border-dark-500 hover:border-primary-light dark:hover:border-neon transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-light/50 dark:focus:ring-neon/50 shadow-inner"
+      className="relative w-16 h-8 rounded-full overflow-hidden isolate bg-gradient-to-r from-light-300 to-light-400 dark:from-dark-700 dark:to-dark-600 border border-light-400 dark:border-dark-500 hover:border-primary-light dark:hover:border-neon transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-light/50 dark:focus:ring-neon/50 shadow-inner"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >
       {/* Background gradient overlay */}
       <motion.div
-        className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-400/20 via-purple-400/20 to-indigo-500/20 dark:from-blue-500/20 dark:via-purple-500/20 dark:to-indigo-500/20"
+        className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-400/20 via-purple-400/20 to-indigo-500/20 dark:from-blue-500/20 dark:via-purple-500/20 dark:to-indigo-500/20 pointer-events-none z-0"
         animate={{
           opacity: isDark ? 1 : 0.7,
         }}
@@ -26,7 +26,7 @@ const ThemeToggle: React.FC = () => {
       
       {/* Sliding toggle circle */}
       <motion.div
-        className="absolute top-0.5 w-7 h-7 rounded-full bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 border border-gray-300 dark:border-gray-600 shadow-lg flex items-center justify-center"
+        className="absolute top-0.5 w-7 h-7 rounded-full bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 border border-gray-300 dark:border-gray-600 shadow-lg flex items-center justify-center z-20"
         animate={{
           x: isDark ? 32 : 2,
         }}
@@ -57,7 +57,7 @@ const ThemeToggle: React.FC = () => {
       </motion.div>
 
       {/* Background icons */}
-      <div className="absolute inset-0 flex items-center justify-between px-2 pointer-events-none">
+      <div className="absolute inset-0 flex items-center justify-between px-3 pointer-events-none z-10">
         <motion.div
           animate={{
             opacity: isDark ? 0.3 : 0.6,
@@ -80,7 +80,7 @@ const ThemeToggle: React.FC = () => {
 
       {/* Glow effect */}
       <motion.div
-        className="absolute inset-0 rounded-full"
+        className="absolute inset-0 rounded-full pointer-events-none z-0"
         animate={{
           boxShadow: isDark 
             ? "0 0 20px rgba(180, 254, 59, 0.3), inset 0 0 20px rgba(180, 254, 59, 0.1)"
