@@ -7,6 +7,7 @@ import go from "../assets/go-ph.jpeg";
 import chat from "../assets/chat.jpeg";
 import ark from "../assets/Ark.jpeg";
 import wander from "../assets/wander.png";
+import style from "../assets/style.png";
 
 interface Project {
   title: string;
@@ -18,6 +19,15 @@ interface Project {
 }
 
 const projectData: Project[] = [
+  {
+    title: "StyleDiff",
+    description:
+      "Reimagine your style with AI. Upload your look, describe changes, and watch your new vision emerge instantly using Flux.2[pro].",
+    image: style,
+    tags: ["React", "Vite", "Flux.2[pro]"],
+    github_url: "https://github.com/bm611/stylediff",
+    live_url: "https://stylediff.netlify.app",
+  },
   {
     title: "Wander Weave",
     description:
@@ -155,7 +165,6 @@ const Projects: React.FC = () => {
                 <p className="text-light-700 dark:text-light-300 text-sm mb-4 line-clamp-3">
                   {project.description}
                 </p>
-                
 
                 <div className="flex gap-3">
                   <a
