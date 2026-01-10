@@ -8,6 +8,7 @@ import chat from "../assets/chat.jpeg";
 import ark from "../assets/Ark.jpeg";
 import wander from "../assets/wander.png";
 import style from "../assets/style.png";
+import arcane from "../assets/arcane.png";
 
 interface Project {
   title: string;
@@ -19,6 +20,15 @@ interface Project {
 }
 
 const projectData: Project[] = [
+  {
+    title: "Arcane",
+    description:
+      "An AI-powered chat application built for the terminal. A beautiful TUI experience for conversing with AI models.",
+    image: arcane,
+    tags: ["Python", "TUI", "AI", "Terminal"],
+    github_url: "https://github.com/bm611/arcane",
+    live_url: "",
+  },
   {
     title: "StyleDiff",
     description:
