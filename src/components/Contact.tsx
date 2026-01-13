@@ -27,23 +27,25 @@ const Contact: React.FC = () => {
     <section
       id="contact"
       ref={ref}
-      className="section-padding bg-light-200 dark:bg-dark-900 relative py-20"
+      className="section-padding bg-light-200 dark:bg-dark-900 relative border-t-2 border-black dark:border-white py-20"
     >
-      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-light-400 dark:via-dark-600 to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
         <motion.div
           variants={fadeIn}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           transition={{ duration: 0.5 }}
-          className="text-center max-w-2xl mx-auto mb-12"
+          className="text-center max-w-2xl mx-auto mb-16 w-full"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-blue-600 dark:from-neon dark:to-teal-400">
-            Get In Touch
-          </h2>
-          <p className="text-light-700 dark:text-light-300 text-lg">
-            I'm open to discussing new projects, ideas, and opportunities. Feel
-            free to reach out through any of the channels below.
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-1 w-12 bg-neon hidden md:block"></div>
+            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white uppercase tracking-tighter">
+              Init_Contact
+            </h2>
+            <div className="h-1 w-12 bg-neon hidden md:block"></div>
+          </div>
+          <p className="text-light-700 dark:text-light-300 text-lg font-mono">
+            {'>'} Open to discussing new projects and opportunities.
           </p>
         </motion.div>
 
@@ -51,64 +53,64 @@ const Contact: React.FC = () => {
           variants={staggerContainer}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-3xl"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl"
         >
           {/* Email Contact Card */}
           <motion.div
             variants={fadeIn}
-            className="bg-light-200 dark:bg-dark-800 p-6 rounded-xl border border-light-300 dark:border-dark-600 hover:border-primary-light dark:hover:border-neon transition-all duration-300 flex flex-col items-center text-center"
+            className="group bg-light-100 dark:bg-dark-800 p-8 border-2 border-black dark:border-white flex flex-col items-center text-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all"
           >
             <a
               href="mailto:bharath.mohan.pro@gmail.com"
-              className="hover:scale-110 transition-all duration-300"
+              className="w-full flex flex-col items-center"
               aria-label="Email me"
             >
-              <div className="p-4 bg-light-300 dark:bg-dark-700 rounded-full text-primary-light dark:text-neon mb-4 hover:bg-light-400 dark:hover:bg-dark-600 transition-colors">
-                <Mail size={24} />
+              <div className="p-4 bg-black dark:bg-white text-white dark:text-black mb-6 group-hover:bg-neon group-hover:text-black transition-colors border-2 border-black dark:border-transparent">
+                <Mail size={32} />
               </div>
+              <h3 className="font-bold mb-2 text-black dark:text-white font-mono uppercase text-xl">Email</h3>
+              <p className="text-light-700 dark:text-light-400 text-sm font-mono">Drop me a line anytime</p>
             </a>
-            <h3 className="font-semibold mb-1 text-light-800 dark:text-light-100">Email</h3>
-            <p className="text-light-700 dark:text-light-300 text-sm">Drop me a line anytime</p>
           </motion.div>
 
           {/* GitHub Contact Card */}
           <motion.div
             variants={fadeIn}
-            className="bg-light-200 dark:bg-dark-800 p-6 rounded-xl border border-light-300 dark:border-dark-600 hover:border-primary-light dark:hover:border-neon transition-all duration-300 flex flex-col items-center text-center"
+            className="group bg-light-100 dark:bg-dark-800 p-8 border-2 border-black dark:border-white flex flex-col items-center text-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all"
           >
             <a
               href="https://github.com/bm611"
-              className="hover:scale-110 transition-all duration-300"
+              className="w-full flex flex-col items-center"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit GitHub profile"
             >
-              <div className="p-4 bg-light-300 dark:bg-dark-700 rounded-full text-primary-light dark:text-neon mb-4 hover:bg-light-400 dark:hover:bg-dark-600 transition-colors">
-                <Github size={24} />
+              <div className="p-4 bg-black dark:bg-white text-white dark:text-black mb-6 group-hover:bg-neon group-hover:text-black transition-colors border-2 border-black dark:border-transparent">
+                <Github size={32} />
               </div>
+              <h3 className="font-bold mb-2 text-black dark:text-white font-mono uppercase text-xl">GitHub</h3>
+              <p className="text-light-700 dark:text-light-400 text-sm font-mono">Check out my code</p>
             </a>
-            <h3 className="font-semibold mb-1 text-light-800 dark:text-light-100">GitHub</h3>
-            <p className="text-light-700 dark:text-light-300 text-sm">Check out my code</p>
           </motion.div>
 
           {/* LinkedIn Contact Card */}
           <motion.div
             variants={fadeIn}
-            className="bg-light-200 dark:bg-dark-800 p-6 rounded-xl border border-light-300 dark:border-dark-600 hover:border-primary-light dark:hover:border-neon transition-all duration-300 flex flex-col items-center text-center"
+            className="group bg-light-100 dark:bg-dark-800 p-8 border-2 border-black dark:border-white flex flex-col items-center text-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all"
           >
             <a
               href="https://www.linkedin.com/in/bharath-mohan/"
-              className="hover:scale-110 transition-all duration-300"
+              className="w-full flex flex-col items-center"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Connect on LinkedIn"
             >
-              <div className="p-4 bg-light-300 dark:bg-dark-700 rounded-full text-primary-light dark:text-neon mb-4 hover:bg-light-400 dark:hover:bg-dark-600 transition-colors">
-                <Linkedin size={24} />
+              <div className="p-4 bg-black dark:bg-white text-white dark:text-black mb-6 group-hover:bg-neon group-hover:text-black transition-colors border-2 border-black dark:border-transparent">
+                <Linkedin size={32} />
               </div>
+              <h3 className="font-bold mb-2 text-black dark:text-white font-mono uppercase text-xl">LinkedIn</h3>
+              <p className="text-light-700 dark:text-light-400 text-sm font-mono">Let's connect</p>
             </a>
-            <h3 className="font-semibold mb-1 text-light-800 dark:text-light-100">LinkedIn</h3>
-            <p className="text-light-700 dark:text-light-300 text-sm">Let's connect</p>
           </motion.div>
         </motion.div>
       </div>

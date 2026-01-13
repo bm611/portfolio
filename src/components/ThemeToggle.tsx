@@ -10,84 +10,27 @@ const ThemeToggle: React.FC = () => {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="relative w-16 h-8 rounded-full overflow-hidden isolate bg-gradient-to-r from-light-300 to-light-400 dark:from-dark-700 dark:to-dark-600 border border-light-400 dark:border-dark-500 hover:border-primary-light dark:hover:border-neon transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-light/50 dark:focus:ring-neon/50 shadow-inner"
+      className="relative flex items-center justify-center p-2 bg-transparent border-2 border-black dark:border-white text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors focus:outline-none"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >
-      {/* Background gradient overlay */}
-      <motion.div
-        className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-400/20 via-purple-400/20 to-indigo-500/20 dark:from-blue-500/20 dark:via-purple-500/20 dark:to-indigo-500/20 pointer-events-none z-0"
-        animate={{
-          opacity: isDark ? 1 : 0.7,
-        }}
-        transition={{ duration: 0.3 }}
-      />
-      
-      {/* Sliding toggle circle */}
-      <motion.div
-        className="absolute top-0.5 w-7 h-7 rounded-full bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 border border-gray-300 dark:border-gray-600 shadow-lg flex items-center justify-center z-20"
-        animate={{
-          x: isDark ? 32 : 2,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 30,
-        }}
-      >
-        {/* Icon container with rotation animation */}
-        <motion.div
-          animate={{
-            rotate: isDark ? 180 : 0,
-            scale: isDark ? 1.1 : 1,
-          }}
-          transition={{
-            duration: 0.4,
-            ease: "easeInOut",
-          }}
-          className="flex items-center justify-center"
-        >
-          {isDark ? (
-            <Moon className="w-4 h-4 text-indigo-600 dark:text-neon" />
-          ) : (
-            <Sun className="w-4 h-4 text-indigo-600" />
-          )}
-        </motion.div>
-      </motion.div>
-
-      {/* Background icons */}
-      <div className="absolute inset-0 flex items-center justify-between px-3 pointer-events-none z-10">
-        <motion.div
-          animate={{
-            opacity: isDark ? 0.3 : 0.6,
-            scale: isDark ? 0.8 : 1,
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <Sun className="w-3 h-3 text-indigo-500" />
-        </motion.div>
-        <motion.div
-          animate={{
-            opacity: isDark ? 0.6 : 0.3,
-            scale: isDark ? 1 : 0.8,
-          }}
-          transition={{ duration: 0.3 }}
-        >
-          <Moon className="w-3 h-3 text-indigo-400 dark:text-neon" />
-        </motion.div>
+      <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase">
+        {isDark ? (
+          <>
+            <Moon className="w-4 h-4" />
+            <span className="hidden md:inline">DARK</span>
+          </>
+        ) : (
+          <>
+            <Sun className="w-4 h-4" />
+            <span className="hidden md:inline">LIGHT</span>
+          </>
+        )}
       </div>
-
-      {/* Glow effect */}
-      <motion.div
-        className="absolute inset-0 rounded-full pointer-events-none z-0"
-        animate={{
-          boxShadow: isDark 
-            ? "0 0 20px rgba(180, 254, 59, 0.3), inset 0 0 20px rgba(180, 254, 59, 0.1)"
-            : "0 0 20px rgba(99, 102, 241, 0.3), inset 0 0 20px rgba(99, 102, 241, 0.1)",
-        }}
-        transition={{ duration: 0.3 }}
-      />
+      
+      {/* Brutalist Hard Shadow */}
+      <div className="absolute top-0 left-0 w-full h-full bg-transparent -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform"></div>
     </motion.button>
   );
 };

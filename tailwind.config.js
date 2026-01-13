@@ -6,40 +6,41 @@ export default {
     extend: {
       fontFamily: {
         'space': ['"Space Grotesk"', 'sans-serif'],
+        'mono': ['"JetBrains Mono"', 'monospace'],
       },
       colors: {
-        'neon': '#B4FE3B',
-        'primary-light': '#1976D2', // Blue for light mode
-        'primary-light-hover': '#1565C0', // Darker blue for hover states
+        'neon': '#CCFF00', // Acid Green / Cyber Lime
+        'primary-light': '#000000', // Black for light mode primary
+        'primary-light-hover': '#333333', // Dark Gray hover
         'dark': {
-          900: '#090909',
-          800: '#121212',
-          700: '#1A1A1A',
-          600: '#222222',
+          900: '#050505', // Obsidian / True Black
+          800: '#0A0A0A',
+          700: '#141414',
+          600: '#1F1F1F',
         },
         'light': {
           100: '#FFFFFF',
-          200: '#F8F9FA',
-          300: '#E9ECEF',
-          400: '#DEE2E6',
-          500: '#CED4DA',
-          600: '#6C757D',
-          700: '#495057',
-          800: '#343A40',
-          900: '#212529',
+          200: '#F0F0F0', // Concrete
+          300: '#E5E5E5',
+          400: '#D4D4D4',
+          500: '#A3A3A3',
+          600: '#737373',
+          700: '#525252',
+          800: '#404040',
+          900: '#262626',
         },
-        'success': {
-          DEFAULT: '#10B981',
-          light: '#D1FAE5',
-        },
-        'warning': {
-          DEFAULT: '#F59E0B',
-          light: '#FEF3C7',
-        },
-        'error': {
-          DEFAULT: '#EF4444',
-          light: '#FEE2E2',
-        },
+        'alert': '#FF3333', // Alert Red
+      },
+      borderRadius: {
+        'none': '0',
+        DEFAULT: '0',
+        'sm': '0',
+        'md': '0',
+        'lg': '0',
+        'xl': '0',
+        '2xl': '0',
+        '3xl': '0',
+        'full': '0',
       },
       animation: {
         'gradient': 'gradient 8s linear infinite',

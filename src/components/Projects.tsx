@@ -130,7 +130,7 @@ const Projects: React.FC = () => {
     <section
       id="projects"
       ref={ref}
-      className="py-24 bg-light-200 dark:bg-dark-800"
+      className="py-24 bg-light-200 dark:bg-dark-900 border-t-2 border-black dark:border-white"
     >
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
@@ -138,62 +138,86 @@ const Projects: React.FC = () => {
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-16"
+          className="max-w-3xl mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-light-800 dark:text-light-100">
-            My Projects
-          </h2>
-          <p className="text-light-700 dark:text-light-300 text-lg">
-            A showcase of my recent projects to solve practical problems.
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-1 w-12 bg-neon"></div>
+            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white uppercase tracking-tighter">
+              Projects_Index
+            </h2>
+          </div>
+          <p className="text-light-700 dark:text-light-300 text-lg font-mono border-l-2 border-black/20 dark:border-white/20 pl-4 ml-2">
+            {'>'} A showcase of technical implementations and solutions.
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={staggerContainer}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          {projectData.map((project) => (
+          {projectData.map((project, index) => (
             <motion.div
               key={project.title}
               variants={projectVariant}
-              className="bg-white dark:bg-dark-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="group bg-light-100 dark:bg-dark-800 border-2 border-black dark:border-white p-2 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all hover:-translate-y-1 hover:-translate-x-1"
             >
-              <div className="h-48 overflow-hidden">
+              {/* Card Header */}
+              <div className="flex justify-between items-center mb-2 px-2 py-1 border-b border-black/10 dark:border-white/10">
+                <span className="font-mono text-xs font-bold uppercase">PRJ-{index + 1 < 10 ? `0${index + 1}` : index + 1}</span>
+                <div className="flex gap-1">
+                  <div className="w-2 h-2 rounded-full bg-neon"></div>
+                </div>
+              </div>
+
+              <div className="h-48 overflow-hidden border border-black dark:border-white relative grayscale hover:grayscale-0 transition-all duration-500">
+                <div className="absolute inset-0 bg-grid opacity-20 z-10 pointer-events-none"></div>
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-light-800 dark:text-light-100">
+              <div className="p-4">
+                <h3 className="text-xl font-bold mb-3 text-black dark:text-white font-mono uppercase truncate">
                   {project.title}
                 </h3>
-                <p className="text-light-700 dark:text-light-300 text-sm mb-4 line-clamp-3">
+                <p className="text-light-700 dark:text-light-400 text-sm mb-6 line-clamp-3 font-mono leading-relaxed h-[4.5em]">
                   {project.description}
                 </p>
 
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-2 mb-6 h-[4.5em] overflow-hidden content-start">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="text-xs font-mono font-bold bg-black/5 dark:bg-white/5 text-black dark:text-white border border-black/20 dark:border-white/20 px-2 py-1 uppercase">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-3 mt-auto">
                   <a
                     href={project.github_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-light-300 dark:bg-dark-600 text-light-800 dark:text-light-100 py-2 px-4 rounded text-center text-sm font-medium hover:bg-light-400 dark:hover:bg-dark-500 transition-colors duration-200"
+                    className="flex-1 btn-secondary text-sm py-2 px-4"
                   >
                     Code
                   </a>
-                  {project.live_url && (
+                  {project.live_url ? (
                     <a
                       href={project.live_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-primary-light dark:bg-neon text-white dark:text-dark-900 py-2 px-4 rounded text-center text-sm font-medium hover:bg-primary-light-hover dark:hover:bg-neon/90 transition-colors duration-200"
+                      className="flex-1 btn-primary text-sm py-2 px-4"
                     >
-                      Link
+                      <span className="relative z-10">Demo</span>
                     </a>
+                  ) : (
+                    <span className="flex-1 bg-black/10 dark:bg-white/10 text-black/40 dark:text-white/40 border-2 border-black/10 dark:border-white/10 py-2 px-4 text-center text-sm font-bold font-mono uppercase cursor-not-allowed">
+                      Offline
+                    </span>
                   )}
                 </div>
               </div>

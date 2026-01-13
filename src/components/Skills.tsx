@@ -1,31 +1,60 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import {
-  Database,
-  Code2,
-  Sparkle,
-  Terminal,
-  Cloud,
-  Bot,
-  LineChart,
-  Binary,
-} from "lucide-react";
 
-interface Skill {
-  name: string;
-  icon: React.ReactNode;
+interface SkillCategory {
+  title: string;
+  skills: string[];
 }
 
-const skillsData: Skill[] = [
-  { name: "Python", icon: <Code2 size={24} /> },
-  { name: "Go", icon: <Terminal size={24} /> },
-  { name: "PySpark", icon: <Sparkle size={24} /> },
-  { name: "SQL", icon: <Database size={24} /> },
-  { name: "GCP", icon: <Cloud size={24} /> },
-  { name: "Machine Learning", icon: <Bot size={24} /> },
-  { name: "Data Science", icon: <LineChart size={24} /> },
-  { name: "NLP", icon: <Binary size={24} /> },
+const skillCategories: SkillCategory[] = [
+  {
+    title: "Programming Languages",
+    skills: ["Python", "SQL", "Go"],
+  },
+  {
+    title: "Data & Analytics",
+    skills: ["PySpark", "SparkSQL", "BigQuery", "PowerBI"],
+  },
+  {
+    title: "GenAI & LLM",
+    skills: [
+      "AI Agents",
+      "Context Engineering",
+      "Text-to-SQL Agents",
+      "Multimodal Data Extraction",
+    ],
+  },
+  {
+    title: "Machine Learning",
+    skills: [
+      "NLP",
+      "Time Series Forecasting",
+      "Classification",
+      "Recommender Systems",
+    ],
+  },
+  {
+    title: "Deep Learning",
+    skills: ["PyTorch", "Neural Networks", "Transformers"],
+  },
+  {
+    title: "Cloud Platforms",
+    skills: ["Google Cloud Platform (GCP)", "AWS (Lambda, S3)", "Databricks"],
+  },
+  {
+    title: "Data Engineering",
+    skills: [
+      "ETL Pipelines",
+      "Apache Airflow",
+      "Cloud Composer",
+      "Data Modeling",
+    ],
+  },
+  {
+    title: "Web Development",
+    skills: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+  },
 ];
 
 const Skills: React.FC = () => {
@@ -39,47 +68,71 @@ const Skills: React.FC = () => {
     visible: { opacity: 1, y: 0 },
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
   return (
     <section
       id="skills"
       ref={ref}
-      className="section-padding bg-light-200 dark:bg-dark-900 relative"
+      className="section-padding bg-light-200 dark:bg-dark-900 relative border-t-2 border-black dark:border-white"
     >
-      <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-light-400 dark:via-dark-600 to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           variants={fadeIn}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-16"
+          className="max-w-3xl mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-blue-600 dark:from-neon dark:to-teal-400">
-            Tech Stack
-          </h2>
-          <p className="text-light-700 dark:text-light-300 text-lg">
-            Technologies and tools I work with
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-1 w-12 bg-neon"></div>
+            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white uppercase tracking-tighter">
+              Tech_Stack
+            </h2>
+          </div>
+          <p className="text-light-700 dark:text-light-300 text-lg font-mono border-l-2 border-black/20 dark:border-white/20 pl-4 ml-2">
+            {">"} Specialized modules and competencies.
           </p>
         </motion.div>
 
         <motion.div
-          variants={fadeIn}
+          variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {skillsData.map((skill, index) => (
+          {skillCategories.map((category, index) => (
             <motion.div
               key={index}
               variants={fadeIn}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="card flex flex-col items-center justify-center p-6 hover:border-primary-light dark:hover:border-neon transition-colors"
+              className="bg-light-100 dark:bg-dark-800 border-2 border-black dark:border-white p-5 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] transition-all h-full"
             >
-              <div className="text-primary-light dark:text-neon mb-4">{skill.icon}</div>
-              <span className="text-light-800 dark:text-light-100 font-medium">{skill.name}</span>
+              <div className="mb-4 pb-2 border-b-2 border-black/10 dark:border-white/10 flex justify-between items-center">
+                <h3 className="font-mono font-bold uppercase text-sm tracking-wider text-black dark:text-white">
+                  {category.title}
+                </h3>
+                <div className="w-2 h-2 bg-neon"></div>
+              </div>
+
+              <ul className="space-y-2">
+                {category.skills.map((skill, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-center gap-2 text-sm font-mono text-light-700 dark:text-light-300"
+                  >
+                    <span className="text-neon">»</span>
+                    <span>{skill}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </motion.div>
