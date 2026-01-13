@@ -120,11 +120,11 @@ const Hero: React.FC = () => {
                   <div className="space-y-4">
                     <div className="p-4 bg-light-300/50 dark:bg-dark-800/50 rounded-xl border border-primary-light/10 dark:border-neon/10">
                       <h4 className="text-lg font-semibold text-light-800 dark:text-light-100 mb-2">
-                        Wander Weave
+                        Arcane
                       </h4>
                       <p className="text-light-700 dark:text-light-300 text-sm leading-relaxed">
-                        Transform your travel photos into captivating stories
-                        with AI-powered narrative generation.
+                        An AI-powered chat application built for the terminal. A
+                        beautiful TUI experience for conversing with AI models.
                       </p>
                     </div>
                   </div>
@@ -137,13 +137,13 @@ const Hero: React.FC = () => {
                     </div>
                     <div className="flex flex-wrap gap-2">
                       <span className="bg-primary-light/10 dark:bg-gradient-to-r dark:from-neon/20 dark:to-green-400/20 border border-primary-light/30 dark:border-neon/30 px-3 py-1 rounded-full text-sm text-primary-light dark:text-neon font-medium">
-                        React
+                        Go
                       </span>
                       <span className="bg-primary-light/10 dark:bg-gradient-to-r dark:from-neon/20 dark:to-green-400/20 border border-primary-light/30 dark:border-neon/30 px-3 py-1 rounded-full text-sm text-primary-light dark:text-neon font-medium">
-                        Vite
+                        OpenAI
                       </span>
                       <span className="bg-primary-light/10 dark:bg-gradient-to-r dark:from-neon/20 dark:to-green-400/20 border border-primary-light/30 dark:border-neon/30 px-3 py-1 rounded-full text-sm text-primary-light dark:text-neon font-medium">
-                        Gemini
+                        TUI
                       </span>
                     </div>
                   </div>

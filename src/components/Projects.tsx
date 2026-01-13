@@ -25,7 +25,7 @@ const projectData: Project[] = [
     description:
       "An AI-powered chat application built for the terminal. A beautiful TUI experience for conversing with AI models.",
     image: arcane,
-    tags: ["Python", "TUI", "AI", "Terminal"],
+    tags: ["Go", "TUI", "OpenAI", "Terminal"],
     github_url: "https://github.com/bm611/arcane",
     live_url: "",
   },
