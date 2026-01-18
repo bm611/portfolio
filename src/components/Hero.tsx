@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="md:min-h-screen flex items-center py-44 md:pt-32 bg-light-200 dark:bg-dark-900 overflow-hidden relative"
+      className="md:min-h-screen flex items-center pt-32 pb-44 md:py-32 bg-light-200 dark:bg-dark-900 overflow-hidden relative"
     >
       {/* Technical Grid Background */}
       <div className="absolute inset-0 bg-grid z-0 opacity-40"></div>
