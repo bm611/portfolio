@@ -1,8 +1,15 @@
 import React from "react";
-import { ArrowRight, Calendar, Terminal as TerminalIcon } from "lucide-react";
+import { ArrowRight, Calendar, Github, Linkedin, Mail, Twitter, Terminal as TerminalIcon } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Hero: React.FC = () => {
+  const socialLinks = [
+    { icon: <Linkedin size={24} />, href: "https://www.linkedin.com/in/bharath-mohan/", label: "LinkedIn" },
+    { icon: <Mail size={24} />, href: "mailto:bharath.mohan.pro@gmail.com", label: "Email" },
+    { icon: <Github size={24} />, href: "https://github.com/bm611", label: "GitHub" },
+    { icon: <Twitter size={24} />, href: "https://twitter.com/bharathmohan", label: "Twitter" },
+  ];
+
   return (
     <section
       id="home"
@@ -80,10 +87,30 @@ const Hero: React.FC = () => {
             </div>
 
             <motion.div
-              className="border-t border-b border-dashed border-black/30 dark:border-white/30 py-4"
+              className="flex flex-wrap gap-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.6 }}
+            >
+              {socialLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-14 h-14 flex items-center justify-center bg-light-100 dark:bg-dark-800 border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1"
+                  aria-label={link.label}
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </motion.div>
+
+            <motion.div
+              className="border-t border-b border-dashed border-black/30 dark:border-white/30 py-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
             >
               <p className="font-mono text-sm uppercase tracking-wider mb-2 text-light-600 dark:text-light-500">
                 Active Protocols:
@@ -105,7 +132,7 @@ const Hero: React.FC = () => {
               className="flex flex-wrap gap-4 pt-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
             >
               <a
                 href="#projects"
