@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Star } from "lucide-react";
 import cerebro from "../assets/cerebro.jpeg";
 import recipe from "../assets/bb.jpeg";
 import go from "../assets/go-ph.jpeg";
@@ -9,6 +10,7 @@ import ark from "../assets/Ark.jpeg";
 import wander from "../assets/wander.png";
 import style from "../assets/style.png";
 import arcane from "../assets/arcane.png";
+import { useGitHubStars } from "../hooks/useGitHubStars";
 
 interface Project {
   title: string;
@@ -100,6 +102,8 @@ const Projects: React.FC = () => {
     threshold: 0.1,
   });
 
+  const starCounts = useGitHubStars(projectData.map((p) => p.github_url));
+
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -147,7 +151,7 @@ const Projects: React.FC = () => {
             </h2>
           </div>
           <p className="text-light-700 dark:text-light-300 text-lg font-mono border-l-2 border-black/20 dark:border-white/20 pl-4 ml-2">
-            {'>'} A showcase of technical implementations and solutions.
+            {">"} A showcase of technical implementations and solutions.
           </p>
         </motion.div>
 
@@ -165,7 +169,9 @@ const Projects: React.FC = () => {
             >
               {/* Card Header */}
               <div className="flex justify-between items-center mb-2 px-2 py-1 border-b border-black/10 dark:border-white/10">
-                <span className="font-mono text-xs font-bold uppercase">PRJ-{index + 1 < 10 ? `0${index + 1}` : index + 1}</span>
+                <span className="font-mono text-xs font-bold uppercase">
+                  PRJ-{index + 1 < 10 ? `0${index + 1}` : index + 1}
+                </span>
                 <div className="flex gap-1">
                   <div className="w-2 h-2 rounded-full bg-neon"></div>
                 </div>
@@ -190,13 +196,22 @@ const Projects: React.FC = () => {
 
                 <div className="flex flex-wrap gap-2 mb-6 h-[4.5em] overflow-hidden content-start">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="text-xs font-mono font-bold bg-black/5 dark:bg-white/5 text-black dark:text-white border border-black/20 dark:border-white/20 px-2 py-1 uppercase">
+                    <span
+                      key={tag}
+                      className="text-xs font-mono font-bold bg-black/5 dark:bg-white/5 text-black dark:text-white border border-black/20 dark:border-white/20 px-2 py-1 uppercase"
+                    >
                       {tag}
                     </span>
                   ))}
                 </div>
 
                 <div className="flex gap-3 mt-auto">
+                  <div className="flex items-center gap-2 px-3 py-2 bg-black/5 dark:bg-white/5 border-2 border-black/10 dark:border-white/10">
+                    <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                    <span className="text-sm font-mono font-bold text-black dark:text-white">
+                      {starCounts[index]}
+                    </span>
+                  </div>
                   <a
                     href={project.github_url}
                     target="_blank"
