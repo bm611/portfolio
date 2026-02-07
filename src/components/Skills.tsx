@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import PortfolioCard, { CardTone } from './ui/PortfolioCard';
-import { cardReveal, sectionReveal, stagger } from '../lib/motion';
+import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import PortfolioCard, { CardTone } from "./ui/PortfolioCard";
+import { cardReveal, sectionReveal, stagger } from "../lib/motion";
 
 interface SkillCategory {
   title: string;
@@ -11,55 +11,55 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
   {
-    title: 'Programming Languages',
-    skills: ['Python', 'SQL', 'Go'],
+    title: "Programming Languages",
+    skills: ["Python", "SQL", "Go"],
   },
   {
-    title: 'Data & Analytics',
-    skills: ['PySpark', 'SparkSQL', 'BigQuery', 'PowerBI'],
+    title: "Data & Analytics",
+    skills: ["PySpark", "SparkSQL", "BigQuery", "PowerBI"],
   },
   {
-    title: 'GenAI & LLM',
+    title: "GenAI & LLM",
     skills: [
-      'AI Agents',
-      'Context Engineering',
-      'Text-to-SQL Agents',
-      'Multimodal Data Extraction',
+      "AI Agents",
+      "Context Engineering",
+      "Text-to-SQL Agents",
+      "Multimodal Data Extraction",
     ],
   },
   {
-    title: 'Machine Learning',
+    title: "Machine Learning",
     skills: [
-      'NLP',
-      'Time Series Forecasting',
-      'Classification',
-      'Recommender Systems',
+      "NLP",
+      "Time Series Forecasting",
+      "Classification",
+      "Recommender Systems",
     ],
   },
   {
-    title: 'Deep Learning',
-    skills: ['PyTorch', 'Neural Networks', 'Transformers'],
+    title: "Deep Learning",
+    skills: ["PyTorch", "Neural Networks", "Transformers"],
   },
   {
-    title: 'Cloud Platforms',
-    skills: ['Google Cloud Platform (GCP)', 'AWS (Lambda, S3)', 'Databricks'],
+    title: "Cloud Platforms",
+    skills: ["Google Cloud Platform (GCP)", "AWS (Lambda, S3)", "Databricks"],
   },
   {
-    title: 'Data Engineering',
+    title: "Data Engineering",
     skills: [
-      'ETL Pipelines',
-      'Apache Airflow',
-      'Cloud Composer',
-      'Data Modeling',
+      "ETL Pipelines",
+      "Apache Airflow",
+      "Cloud Composer",
+      "Data Modeling",
     ],
   },
   {
-    title: 'Web Development',
-    skills: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
+    title: "Web Development",
+    skills: ["React", "TypeScript", "Tailwind CSS", "Vite"],
   },
 ];
 
-const tones: CardTone[] = ['beige', 'terracotta', 'slate', 'forest'];
+const tones: CardTone[] = ["beige", "terracotta", "slate", "forest"];
 
 const Skills: React.FC = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -74,9 +74,10 @@ const Skills: React.FC = () => {
           animate={inView ? "visible" : "hidden"}
         >
           <p className="section-kicker">Capabilities</p>
-          <h2 className="section-title">Skills Card Matrix</h2>
+          <h2 className="section-title">Skills</h2>
           <p className="section-copy">
-            A categorized snapshot of the technologies and methods I use to ship production-ready data and AI products.
+            A categorized snapshot of the technologies and methods I use to ship
+            production-ready data and AI products.
           </p>
         </motion.div>
 
@@ -88,17 +89,22 @@ const Skills: React.FC = () => {
         >
           {skillCategories.map((category, index) => {
             const tone = tones[index % tones.length];
-            const darkTone = tone === 'slate' || tone === 'forest';
+            const darkTone = tone === "slate" || tone === "forest";
 
             return (
-              <PortfolioCard key={category.title} tone={tone} variants={cardReveal} className="h-full p-5">
+              <PortfolioCard
+                key={category.title}
+                tone={tone}
+                variants={cardReveal}
+                className="h-full p-5"
+              >
                 <div className="flex items-start justify-between gap-2">
-                  <h3 className="text-lg leading-tight">
-                    {category.title}
-                  </h3>
+                  <h3 className="text-lg leading-tight">{category.title}</h3>
                   <span
                     className={`rounded-full border px-2 py-1 text-[0.65rem] font-mono uppercase tracking-[0.1em] ${
-                      darkTone ? 'border-[#F5E6CC]/28 bg-[#F5E6CC]/12' : 'border-[#2f3328]/18 bg-black/10'
+                      darkTone
+                        ? "border-[#F5E6CC]/28 bg-[#F5E6CC]/12"
+                        : "border-[#2f3328]/18 bg-black/10"
                     }`}
                   >
                     {category.skills.length} items
@@ -107,8 +113,14 @@ const Skills: React.FC = () => {
 
                 <ul className="mt-4">
                   {category.skills.map((skill) => (
-                    <motion.li key={skill} className="skill-row" whileHover={{ x: 3 }}>
-                      <span className={`h-1.5 w-1.5 rounded-full ${darkTone ? 'bg-[#F5E6CC]' : 'bg-[#22311b]'}`} />
+                    <motion.li
+                      key={skill}
+                      className="skill-row"
+                      whileHover={{ x: 3 }}
+                    >
+                      <span
+                        className={`h-1.5 w-1.5 rounded-full ${darkTone ? "bg-[#F5E6CC]" : "bg-[#22311b]"}`}
+                      />
                       <span>{skill}</span>
                     </motion.li>
                   ))}
