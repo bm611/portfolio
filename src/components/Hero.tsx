@@ -81,18 +81,23 @@ const Hero: React.FC = () => {
   ];
 
   const inlinePill = (Icon: React.ElementType, text: string) => (
-    <motion.span
-      whileHover={{
-        y: -3,
-        scale: 1.06,
-        boxShadow: "0 6px 20px rgba(243, 157, 132, 0.25)",
-      }}
-      whileTap={{ scale: 0.96 }}
-      className="snapshot-pill mx-1 inline-flex items-center gap-1.5 rounded-full border border-[#F5E6CC]/26 bg-[#F5E6CC]/12 px-2.5 py-1 align-middle font-mono text-[0.68rem] uppercase tracking-[0.09em] text-[#F5E6CC]"
-    >
-      <Icon size={13} />
-      {text}
-    </motion.span>
+    <>
+      <span className="mx-0.5 font-semibold text-[#F5E6CC]/95 md:hidden">
+        {text}
+      </span>
+      <motion.span
+        whileHover={{
+          y: -3,
+          scale: 1.06,
+          boxShadow: "0 6px 20px rgba(243, 157, 132, 0.25)",
+        }}
+        whileTap={{ scale: 0.96 }}
+        className="snapshot-pill mx-1 hidden items-center gap-1.5 rounded-full border border-[#F5E6CC]/26 bg-[#F5E6CC]/12 px-2.5 py-1 align-middle font-mono text-[0.68rem] uppercase tracking-[0.09em] text-[#F5E6CC] md:inline-flex"
+      >
+        <Icon size={13} />
+        {text}
+      </motion.span>
+    </>
   );
 
   return (
@@ -247,7 +252,7 @@ const Hero: React.FC = () => {
                   </div>
 
                   <motion.p
-                    className="mt-5 text-[1.06rem] md:text-[1.22rem] leading-[1.72] text-[#F5E6CC]/90"
+                    className="mt-5 text-[1.06rem] leading-relaxed text-[#F5E6CC]/90 md:text-[1.22rem] md:leading-[1.72]"
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{

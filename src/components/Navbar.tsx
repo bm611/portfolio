@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Leaf, Menu, X } from "lucide-react";
+import { Menu, Terminal, X } from "lucide-react";
 import { menuPanel, stagger } from "../lib/motion";
 
 const Navbar: React.FC = () => {
@@ -63,11 +63,9 @@ const Navbar: React.FC = () => {
               className="inline-flex items-center gap-2 font-semibold tracking-wide text-[0.95rem]"
             >
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#F5E6CC]/15 border border-[#F5E6CC]/25">
-                <Leaf size={16} />
+                <Terminal size={16} />
               </span>
-              <span className="font-mono text-xs sm:text-sm uppercase">
-                Bharath
-              </span>
+              <span className="font-mono text-xs sm:text-lg uppercase">BM</span>
             </a>
 
             <nav className="hidden md:flex items-center gap-1">
