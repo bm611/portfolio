@@ -1,21 +1,10 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import {
-  siNeovim,
-  siObsidian,
-  siSony,
-  siApple,
-  siArc,
-  siZenbrowser,
-} from "simple-icons";
-import {
-  Terminal,
-  Bot,
-  Keyboard,
-  Headphones,
-  Globe,
-} from "lucide-react";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { siNeovim, siObsidian, siSony, siApple, siArc, siZenbrowser } from 'simple-icons';
+import { Bot, Globe, Headphones, Keyboard, Terminal } from 'lucide-react';
+import PortfolioCard from './ui/PortfolioCard';
+import { cardReveal, sectionReveal, stagger, useMotionConfig } from '../lib/motion';
 
 interface StackItem {
   category: string;
@@ -26,168 +15,77 @@ interface StackItem {
 }
 
 const stackItems: StackItem[] = [
-  {
-    category: "Editor",
-    name: "Zen",
-    icon: siZenbrowser,
-    color: "#ff7043",
-  },
-  {
-    category: "Editor",
-    name: "Neovim",
-    icon: siNeovim,
-    color: "#57A143",
-  },
-  {
-    category: "Terminal",
-    name: "Ghostty",
-    lucideIcon: Terminal,
-    color: "#6366f1",
-  },
-  {
-    category: "Agent",
-    name: "Droid CLI",
-    lucideIcon: Bot,
-    color: "#06b6d4",
-  },
-  {
-    category: "Laptop",
-    name: "MacBook Pro",
-    icon: siApple,
-    color: "#a1a1aa",
-  },
-  {
-    category: "Camera",
-    name: "Sony A7R IV",
-    icon: siSony,
-    color: "#000000",
-  },
-  {
-    category: "Keyboard",
-    name: "Nuphy Halo 75",
-    lucideIcon: Keyboard,
-    color: "#ec4899",
-  },
-  {
-    category: "Headphones",
-    name: "Sony XM3",
-    lucideIcon: Headphones,
-    color: "#8b5cf6",
-  },
-  {
-    category: "Browser",
-    name: "Arc",
-    icon: siArc,
-    color: "#FCBFBD",
-  },
-  {
-    category: "Browser",
-    name: "Dia",
-    lucideIcon: Globe,
-    color: "#3b82f6",
-  },
-  {
-    category: "Notes",
-    name: "Obsidian",
-    icon: siObsidian,
-    color: "#7C3AED",
-  },
+  { category: 'Browser', name: 'Zen', icon: siZenbrowser, color: '#ff7043' },
+  { category: 'Editor', name: 'Neovim', icon: siNeovim, color: '#57A143' },
+  { category: 'Terminal', name: 'Ghostty', lucideIcon: Terminal, color: '#f5e6cc' },
+  { category: 'Agent', name: 'Droid CLI', lucideIcon: Bot, color: '#f39d84' },
+  { category: 'Laptop', name: 'MacBook Pro', icon: siApple, color: '#e8e8e8' },
+  { category: 'Camera', name: 'Sony A7R IV', icon: siSony, color: '#1f1f1f' },
+  { category: 'Keyboard', name: 'Nuphy Halo 75', lucideIcon: Keyboard, color: '#F5E6CC' },
+  { category: 'Headphones', name: 'Sony XM3', lucideIcon: Headphones, color: '#ffd8cb' },
+  { category: 'Browser', name: 'Arc', icon: siArc, color: '#FCBFBD' },
+  { category: 'Browser', name: 'Dia', lucideIcon: Globe, color: '#9fcc8d' },
+  { category: 'Notes', name: 'Obsidian', icon: siObsidian, color: '#B69BFF' },
 ];
 
 const Stack: React.FC = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 120,
-        damping: 14,
-      },
-    },
-  };
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.12 });
+  const { hoverIcon } = useMotionConfig();
 
   return (
-    <section
-      id="stack"
-      ref={ref}
-      className="section-padding bg-light-200 dark:bg-dark-900 relative border-t-2 border-black dark:border-white"
-    >
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="stack" ref={ref} className="section-shell">
+      <div className="section-container container mx-auto px-4 md:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mb-16"
+          className="section-header"
+          variants={sectionReveal}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
         >
-          <div className="flex items-center gap-4 mb-4">
-            <div className="h-1 w-12 bg-neon"></div>
-            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white uppercase tracking-tighter">
-              My_Stack
-            </h2>
-          </div>
-          <p className="text-light-700 dark:text-light-300 text-lg font-mono border-l-2 border-black/20 dark:border-white/20 pl-4 ml-2">
-            {">"} Tools and gear that power my workflow.
+          <p className="section-kicker">Toolkit</p>
+          <h2 className="section-title">Daily Stack Cards</h2>
+          <p className="section-copy">
+            The tools, hardware, and creative utilities powering my day-to-day workflow.
           </p>
         </motion.div>
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger(0.06)}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="flex flex-wrap justify-center gap-3 md:gap-4"
+          animate={inView ? 'visible' : 'hidden'}
+          className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4"
         >
-          {stackItems.map((item, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              className="group"
-            >
-              <div className="flex items-center gap-3 px-4 py-3 w-48 bg-light-100 dark:bg-dark-800 border-2 border-black dark:border-white hover:shadow-none shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] transition-all cursor-default">
-                {item.icon ? (
-                  <svg
-                    role="img"
-                    viewBox="0 0 24 24"
-                    className="w-5 h-5 flex-shrink-0"
-                    style={{ fill: item.color }}
-                  >
-                    <path d={item.icon.path} />
-                  </svg>
-                ) : item.lucideIcon ? (
-                  <item.lucideIcon
-                    size={20}
-                    color={item.color}
-                    className="flex-shrink-0"
-                  />
-                ) : null}
-                <div className="flex flex-col">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-light-600 dark:text-light-500">
-                    {item.category}
-                  </span>
-                  <span className="text-sm font-semibold text-black dark:text-white whitespace-nowrap">
-                    {item.name}
-                  </span>
+          {stackItems.map((item) => {
+            return (
+              <PortfolioCard
+                key={`${item.category}-${item.name}`}
+                tone="beige"
+                variants={cardReveal}
+                className="stack-tile p-3 md:p-4 min-h-[78px] md:min-h-[92px]"
+                whileHover={{ y: -6, scale: 1.01 }}
+              >
+                <div className="flex items-center gap-2.5 md:gap-3 min-w-0">
+                  <motion.span whileHover={hoverIcon} className="inline-flex h-8 w-8 md:h-9 md:w-9 items-center justify-center rounded-full bg-[#2D4F1E]/10">
+                    {item.icon ? (
+                      <svg role="img" viewBox="0 0 24 24" className="h-4 w-4 md:h-5 md:w-5" style={{ fill: item.color }}>
+                        <path d={item.icon.path} />
+                      </svg>
+                    ) : item.lucideIcon ? (
+                      <item.lucideIcon size={18} color={item.color} />
+                    ) : null}
+                  </motion.span>
+
+                  <div className="flex min-w-0 flex-col">
+                    <span className="font-mono text-[0.58rem] md:text-[0.65rem] uppercase tracking-[0.12em] text-[#2f3328]/65">
+                      {item.category}
+                    </span>
+                    <span className="truncate text-[1.02rem] md:text-[1.08rem] font-semibold text-[#212718] leading-tight">
+                      {item.name}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </PortfolioCard>
+            );
+          })}
         </motion.div>
       </div>
     </section>

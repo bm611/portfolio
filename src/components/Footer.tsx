@@ -1,66 +1,48 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Terminal, ChevronUp } from "lucide-react";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ChevronUp, Leaf } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-light-200 dark:bg-dark-900 border-t-2 border-black dark:border-white relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-black/10 dark:bg-white/10"></div>
-      
-      <div className="container mx-auto px-4 md:px-6 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-2 text-black dark:text-white font-bold text-xl mb-4 md:mb-0 font-mono uppercase tracking-widest border-2 border-transparent hover:border-neon px-2 transition-all"
-          >
-            <Terminal size={24} className="text-black dark:text-neon" />
-            <span>BM_DEV</span>
-          </motion.div>
+    <footer className="footer-band relative z-10">
+      <div className="container mx-auto px-4 md:px-6">
+        <motion.div
+          className="e-card tone-forest p-5 md:p-6"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.55 }}
+        >
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+            <div className="inline-flex items-center gap-3">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#F5E6CC]/30 bg-[#F5E6CC]/10">
+                <Leaf size={16} />
+              </span>
+              <div>
+                <p className="font-mono text-[0.72rem] uppercase tracking-[0.11em] text-[#F5E6CC]/72">Built by Bharath Mohan</p>
+                <p className="text-sm text-[#F5E6CC]/88">Designing practical, elegant AI-driven experiences.</p>
+              </div>
+            </div>
 
-          <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-center md:text-right"
-          >
-            <p className="text-light-700 dark:text-light-300 text-sm font-mono">
-              © {new Date().getFullYear()} SYSTEM_STATUS: ONLINE
-            </p>
-            <p className="text-light-600 dark:text-light-400 text-xs mt-1 font-mono uppercase">
-              Designed & Built by Bharath Mohan
-            </p>
-          </motion.div>
-        </div>
-
-        <div className="flex justify-center mt-12">
-          <motion.button
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="p-4 bg-light-100 dark:bg-dark-800 text-black dark:text-white border-2 border-black dark:border-white hover:bg-neon hover:text-black transition-colors hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]"
-            onClick={scrollToTop}
-            aria-label="Scroll to top"
-          >
-            <ChevronUp size={24} />
-          </motion.button>
-        </div>
+            <div className="flex items-center gap-3 self-end md:self-auto">
+              <p className="font-mono text-xs uppercase tracking-[0.1em] text-[#F5E6CC]/78">{new Date().getFullYear()} Portfolio</p>
+              <motion.button
+                type="button"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#F5E6CC]/36 bg-[#F5E6CC]/10"
+                onClick={scrollToTop}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.96 }}
+                aria-label="Scroll to top"
+              >
+                <ChevronUp size={18} />
+              </motion.button>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </footer>
   );

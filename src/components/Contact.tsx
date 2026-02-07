@@ -1,117 +1,92 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { Mail, Github, Linkedin } from "lucide-react";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+import { ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react';
+import PortfolioCard, { CardTone } from './ui/PortfolioCard';
+import { cardReveal, sectionReveal, stagger, useMotionConfig } from '../lib/motion';
+
+const contactCards = [
+  {
+    title: 'Email',
+    text: 'Drop me a line for collaborations and product ideas.',
+    icon: Mail,
+    href: 'mailto:bharath.mohan.pro@gmail.com',
+    external: false,
+  },
+  {
+    title: 'GitHub',
+    text: 'Browse repositories, experiments, and project source code.',
+    icon: Github,
+    href: 'https://github.com/bm611',
+    external: true,
+  },
+  {
+    title: 'LinkedIn',
+    text: 'Connect for professional opportunities and discussions.',
+    icon: Linkedin,
+    href: 'https://www.linkedin.com/in/bharath-mohan/',
+    external: true,
+  },
+];
+
+const tones: CardTone[] = ['beige', 'terracotta', 'slate'];
 
 const Contact: React.FC = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  const staggerContainer = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { hoverIcon } = useMotionConfig();
 
   return (
-    <section
-      id="contact"
-      ref={ref}
-      className="section-padding bg-light-200 dark:bg-dark-900 relative border-t-2 border-black dark:border-white py-20"
-    >
-      <div className="container mx-auto px-4 md:px-6 flex flex-col items-center">
+    <section id="contact" ref={ref} className="section-shell pb-24">
+      <div className="section-container container mx-auto px-4 md:px-6">
         <motion.div
-          variants={fadeIn}
+          className="section-header max-w-3xl text-center mx-auto"
+          variants={sectionReveal}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-2xl mx-auto mb-16 w-full"
+          animate={inView ? 'visible' : 'hidden'}
         >
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="h-1 w-12 bg-neon hidden md:block"></div>
-            <h2 className="text-3xl md:text-5xl font-bold text-black dark:text-white uppercase tracking-tighter">
-              Init_Contact
-            </h2>
-            <div className="h-1 w-12 bg-neon hidden md:block"></div>
-          </div>
-          <p className="text-light-700 dark:text-light-300 text-lg font-mono">
-            {'>'} Open to discussing new projects and opportunities.
+          <p className="section-kicker !justify-center before:!hidden">Lets Collaborate</p>
+          <h2 className="section-title">Contact Cards</h2>
+          <p className="section-copy mx-auto">
+            Open to discussing new product ideas, AI engineering opportunities, and full-stack collaborations.
           </p>
         </motion.div>
 
         <motion.div
-          variants={staggerContainer}
+          variants={stagger(0.09)}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-4xl"
+          animate={inView ? 'visible' : 'hidden'}
+          className="mx-auto grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-3"
         >
-          {/* Email Contact Card */}
-          <motion.div
-            variants={fadeIn}
-            className="group bg-light-100 dark:bg-dark-800 p-8 border-2 border-black dark:border-white flex flex-col items-center text-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all"
-          >
-            <a
-              href="mailto:bharath.mohan.pro@gmail.com"
-              className="w-full flex flex-col items-center"
-              aria-label="Email me"
-            >
-              <div className="p-4 bg-black dark:bg-white text-white dark:text-black mb-6 group-hover:bg-neon group-hover:text-black transition-colors border-2 border-black dark:border-transparent">
-                <Mail size={32} />
-              </div>
-              <h3 className="font-bold mb-2 text-black dark:text-white font-mono uppercase text-xl">Email</h3>
-              <p className="text-light-700 dark:text-light-400 text-sm font-mono">Drop me a line anytime</p>
-            </a>
-          </motion.div>
+          {contactCards.map((card, index) => {
+            const tone = tones[index % tones.length];
+            const darkTone = tone === 'forest' || tone === 'slate';
 
-          {/* GitHub Contact Card */}
-          <motion.div
-            variants={fadeIn}
-            className="group bg-light-100 dark:bg-dark-800 p-8 border-2 border-black dark:border-white flex flex-col items-center text-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all"
-          >
-            <a
-              href="https://github.com/bm611"
-              className="w-full flex flex-col items-center"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit GitHub profile"
-            >
-              <div className="p-4 bg-black dark:bg-white text-white dark:text-black mb-6 group-hover:bg-neon group-hover:text-black transition-colors border-2 border-black dark:border-transparent">
-                <Github size={32} />
-              </div>
-              <h3 className="font-bold mb-2 text-black dark:text-white font-mono uppercase text-xl">GitHub</h3>
-              <p className="text-light-700 dark:text-light-400 text-sm font-mono">Check out my code</p>
-            </a>
-          </motion.div>
+            return (
+              <PortfolioCard key={card.title} tone={tone} variants={cardReveal} className="h-full p-6" whileHover={{ y: -8, scale: 1.015 }}>
+                <a
+                  href={card.href}
+                  target={card.external ? '_blank' : undefined}
+                  rel={card.external ? 'noopener noreferrer' : undefined}
+                  className="flex h-full flex-col"
+                  aria-label={card.title}
+                >
+                  <motion.span className="contact-icon" whileHover={hoverIcon}>
+                    <card.icon size={24} />
+                  </motion.span>
 
-          {/* LinkedIn Contact Card */}
-          <motion.div
-            variants={fadeIn}
-            className="group bg-light-100 dark:bg-dark-800 p-8 border-2 border-black dark:border-white flex flex-col items-center text-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all"
-          >
-            <a
-              href="https://www.linkedin.com/in/bharath-mohan/"
-              className="w-full flex flex-col items-center"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Connect on LinkedIn"
-            >
-              <div className="p-4 bg-black dark:bg-white text-white dark:text-black mb-6 group-hover:bg-neon group-hover:text-black transition-colors border-2 border-black dark:border-transparent">
-                <Linkedin size={32} />
-              </div>
-              <h3 className="font-bold mb-2 text-black dark:text-white font-mono uppercase text-xl">LinkedIn</h3>
-              <p className="text-light-700 dark:text-light-400 text-sm font-mono">Let's connect</p>
-            </a>
-          </motion.div>
+                  <h3 className="mt-4 text-2xl">{card.title}</h3>
+                  <p className={`mt-2 flex-1 text-sm leading-relaxed ${darkTone ? 'text-[#F5E6CC]/84' : 'text-[#2f3429]/82'}`}>
+                    {card.text}
+                  </p>
+
+                  <span className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.1em]">
+                    Reach Out
+                    <ArrowUpRight size={14} />
+                  </span>
+                </a>
+              </PortfolioCard>
+            );
+          })}
         </motion.div>
       </div>
     </section>
