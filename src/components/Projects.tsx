@@ -77,6 +77,14 @@ const projectData: Project[] = [
     live_url: "",
   },
   {
+    title: "GitDone",
+    description:
+      "Track habits like git commits — a GitHub-style contribution grid for your daily habits with real-time sync and custom colors.",
+    tags: ["React", "TypeScript", "Convex", "Clerk", "Vite"],
+    github_url: "https://github.com/bm611/gitdone",
+    live_url: "https://gitdone.xyz",
+  },
+  {
     title: "Chat-UI",
     description:
       "A modern chat interface for interacting with various AI models locally or through providers.",
