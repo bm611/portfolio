@@ -92,6 +92,14 @@ const projectData: Project[] = [
     github_url: "https://github.com/bm611/chat-ui",
     live_url: "",
   },
+  {
+    title: "Aura",
+    description:
+      "A markdown-based note-taking app for capturing and organizing your thoughts with a clean, minimalist interface.",
+    tags: ["React", "TypeScript", "Markdown", "Vite"],
+    github_url: "https://github.com/bm611/Aura",
+    live_url: "https://takemynote.netlify.app",
+  },
 ];
 
 const tones: CardTone[] = ["beige", "terracotta", "slate", "forest"];
@@ -128,7 +136,7 @@ const Projects: React.FC = () => {
         >
           {projectData.map((project, index) => {
             const tone = tones[index % tones.length];
-            const darkTone = tone === "slate" || tone === "forest";
+            const darkTone = true;
 
             return (
               <PortfolioCard
