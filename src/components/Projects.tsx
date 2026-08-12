@@ -102,7 +102,12 @@ const projectData: Project[] = [
   },
 ];
 
-const tones: CardTone[] = ["beige", "terracotta", "slate", "forest"];
+// Mostly quiet paper/beige cards, with a couple of solid accents for rhythm.
+const toneForIndex = (index: number): CardTone => {
+  if (index === 1) return "terracotta";
+  if (index === 7) return "forest";
+  return index % 2 === 0 ? "paper" : "beige";
+};
 
 const Projects: React.FC = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -124,45 +129,44 @@ const Projects: React.FC = () => {
           <h2 className="section-title">Project Gallery</h2>
           <p className="section-copy">
             A portfolio of AI products, terminal tools, and full-stack
-            experiments presented as tactile cards with layered interactions.
+            experiments.
           </p>
         </motion.div>
 
         <motion.div
-          variants={stagger(0.1)}
+          variants={stagger(0.08)}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+          className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3"
         >
           {projectData.map((project, index) => {
-            const tone = tones[index % tones.length];
-            const darkTone = true;
+            const tone = toneForIndex(index);
+            const darkTone = tone === "terracotta" || tone === "forest";
 
             return (
               <PortfolioCard
                 key={project.title}
                 tone={tone}
-                className="h-full p-5 flex flex-col"
+                className="h-full p-6 flex flex-col"
                 variants={cardReveal}
                 whileTap={tapCard}
               >
-                <div className="flex items-center justify-between pb-2">
-                  <span className="font-mono text-[0.68rem] tracking-[0.12em] uppercase opacity-80">
+                <div className="flex items-center justify-between pb-3">
+                  <span
+                    className={`font-mono text-[0.68rem] tracking-[0.12em] uppercase ${darkTone ? "text-white/60" : "text-[#7A776D]"}`}
+                  >
                     PRJ-{String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="rounded-full px-2 py-0.5 text-[0.64rem] font-mono uppercase tracking-[0.09em] bg-black/10">
-                    Featured
                   </span>
                 </div>
 
                 <div
-                  className={`flex flex-1 flex-col border-t pt-4 ${darkTone ? "border-[#F5E6CC]/24" : "border-black/15"}`}
+                  className={`flex flex-1 flex-col border-t pt-5 ${darkTone ? "border-white/20" : "border-hairline"}`}
                 >
                   <h3 className="text-xl font-semibold leading-tight">
                     {project.title}
                   </h3>
                   <p
-                    className={`mt-3 text-sm leading-relaxed ${darkTone ? "text-[#F5E6CC]/84" : "text-[#2f3328]/84"} flex-1`}
+                    className={`mt-3 text-sm leading-relaxed flex-1 ${darkTone ? "text-white/85" : "text-[#55544C]"}`}
                   >
                     {project.description}
                   </p>
@@ -172,7 +176,7 @@ const Projects: React.FC = () => {
                       <motion.span
                         key={tag}
                         className="project-tag"
-                        whileHover={{ y: -1.5 }}
+                        whileHover={{ y: -1 }}
                       >
                         {tag}
                       </motion.span>
@@ -181,13 +185,13 @@ const Projects: React.FC = () => {
 
                   <div className="mt-6 flex flex-wrap items-center gap-2">
                     <div
-                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-mono ${
+                      className={`inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs font-mono ${
                         darkTone
-                          ? "border-[#F5E6CC]/30 bg-[#F5E6CC]/10"
-                          : "border-[#2f3328]/20 bg-black/10"
+                          ? "border-white/25 bg-white/10"
+                          : "border-hairline bg-[#FBF9F4]"
                       }`}
                     >
-                      <Star className="h-3.5 w-3.5 fill-yellow-300 text-yellow-300" />
+                      <Star className="h-3.5 w-3.5" />
                       <span>{starCounts[index]}</span>
                     </div>
 
@@ -195,7 +199,7 @@ const Projects: React.FC = () => {
                       href={project.github_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`earth-btn ${darkTone ? "earth-btn-secondary" : "earth-btn-primary"} !px-3 !py-2 text-xs`}
+                      className={`earth-btn ${darkTone ? "earth-btn-primary" : "earth-btn-secondary"} !px-3 !py-1.5 text-xs`}
                       whileHover={hoverIcon}
                       whileTap={{ scale: 0.97 }}
                     >
@@ -207,19 +211,19 @@ const Projects: React.FC = () => {
                         href={project.live_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`earth-btn ${darkTone ? "earth-btn-chip" : "earth-btn-secondary"} !px-3 !py-2 text-xs`}
+                        className={`earth-btn ${darkTone ? "earth-btn-chip" : "earth-btn-primary"} !px-3 !py-1.5 text-xs`}
                         whileHover={hoverIcon}
                         whileTap={{ scale: 0.97 }}
                       >
                         Demo
-                        <ArrowUpRight size={14} />
+                        <ArrowUpRight size={13} />
                       </motion.a>
                     ) : (
                       <span
-                        className={`inline-flex items-center rounded-full border px-3 py-2 text-xs font-mono uppercase tracking-[0.08em] ${
+                        className={`inline-flex items-center rounded-md border px-2.5 py-1.5 text-xs font-mono uppercase tracking-[0.08em] ${
                           darkTone
-                            ? "border-[#F5E6CC]/25 text-[#F5E6CC]/64"
-                            : "border-[#2f3328]/20 text-[#2f3328]/55"
+                            ? "border-white/20 text-white/50"
+                            : "border-hairline text-[#7A776D]"
                         }`}
                       >
                         Offline

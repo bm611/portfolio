@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import PortfolioCard, { CardTone } from "./ui/PortfolioCard";
+import PortfolioCard from "./ui/PortfolioCard";
 import { cardReveal, sectionReveal, stagger } from "../lib/motion";
 
 interface SkillCategory {
@@ -59,8 +59,6 @@ const skillCategories: SkillCategory[] = [
   },
 ];
 
-const tones: CardTone[] = ["beige", "terracotta", "slate", "forest"];
-
 const Skills: React.FC = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
@@ -82,52 +80,34 @@ const Skills: React.FC = () => {
         </motion.div>
 
         <motion.div
-          variants={stagger(0.08)}
+          variants={stagger(0.06)}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4"
+          className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4"
         >
-          {skillCategories.map((category, index) => {
-            const tone = tones[index % tones.length];
-            const darkTone = tone === "slate" || tone === "forest";
+          {skillCategories.map((category) => (
+            <PortfolioCard
+              key={category.title}
+              tone="paper"
+              variants={cardReveal}
+              className="h-full p-6"
+            >
+              <h3 className="text-lg leading-tight">{category.title}</h3>
 
-            return (
-              <PortfolioCard
-                key={category.title}
-                tone={tone}
-                variants={cardReveal}
-                className="h-full p-5"
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <h3 className="text-lg leading-tight">{category.title}</h3>
-                  <span
-                    className={`rounded-full border px-2 py-1 text-[0.65rem] font-mono uppercase tracking-[0.1em] ${
-                      darkTone
-                        ? "border-[#F5E6CC]/28 bg-[#F5E6CC]/12"
-                        : "border-[#2f3328]/18 bg-black/10"
-                    }`}
+              <ul className="mt-4">
+                {category.skills.map((skill) => (
+                  <motion.li
+                    key={skill}
+                    className="skill-row"
+                    whileHover={{ x: 3 }}
                   >
-                    {category.skills.length} items
-                  </span>
-                </div>
-
-                <ul className="mt-4">
-                  {category.skills.map((skill) => (
-                    <motion.li
-                      key={skill}
-                      className="skill-row"
-                      whileHover={{ x: 3 }}
-                    >
-                      <span
-                        className={`h-1.5 w-1.5 rounded-full ${darkTone ? "bg-[#F5E6CC]" : "bg-[#22311b]"}`}
-                      />
-                      <span>{skill}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </PortfolioCard>
-            );
-          })}
+                    <span className="h-1 w-1 shrink-0 rounded-full bg-[#C4683F]" />
+                    <span>{skill}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </PortfolioCard>
+          ))}
         </motion.div>
       </div>
     </section>

@@ -2,7 +2,7 @@ import React from 'react';
 import { HTMLMotionProps, motion } from 'framer-motion';
 import { useMotionConfig } from '../../lib/motion';
 
-export type CardTone = 'beige' | 'terracotta' | 'slate' | 'forest';
+export type CardTone = 'beige' | 'paper' | 'terracotta' | 'slate' | 'forest';
 
 export interface PortfolioCardProps extends HTMLMotionProps<'article'> {
   tone?: CardTone;
@@ -11,6 +11,7 @@ export interface PortfolioCardProps extends HTMLMotionProps<'article'> {
 
 const toneClassMap: Record<CardTone, string> = {
   beige: 'tone-beige',
+  paper: 'tone-paper',
   terracotta: 'tone-terracotta',
   slate: 'tone-slate',
   forest: 'tone-forest',

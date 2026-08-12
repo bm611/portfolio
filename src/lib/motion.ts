@@ -10,11 +10,10 @@ export const sectionReveal: Variants = {
 };
 
 export const cardReveal: Variants = {
-  hidden: { opacity: 0, y: 22, scale: 0.98 },
+  hidden: { opacity: 0, y: 14 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
   },
 };
@@ -70,28 +69,22 @@ export const useMotionConfig = () => {
   return {
     reduced,
     hoverCard: reduced
-      ? { y: -2, scale: 1.002 }
+      ? { y: -2 }
       : {
-          y: -9,
-          scale: 1.012,
-          rotateX: 2.5,
-          rotateY: -2.5,
+          y: -4,
           transition: hoverSpring,
         },
     tapCard: reduced ? { scale: 0.995 } : { scale: 0.98 },
     hoverMedia: reduced
-      ? { scale: 1.02 }
+      ? { scale: 1.01 }
       : {
-          scale: 1.08,
-          y: -5,
+          scale: 1.03,
           transition: { type: 'spring', stiffness: 250, damping: 22 },
         },
     hoverIcon: reduced
-      ? { scale: 1.02 }
+      ? { scale: 1.01 }
       : {
-          x: 3,
-          y: -2,
-          scale: 1.08,
+          x: 2,
           transition: iconSpring,
         },
   };
